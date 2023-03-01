@@ -14,6 +14,13 @@ public class PostController {
     // 게시글 작성 페이지
     @GetMapping("/post/write.do")
     public String openPostWrite(Model model) {
+        String title = "제목",
+                content = "내용",
+                writer = "홍길동";
+
+        model.addAttribute("t", title);
+        model.addAttribute("c", content);
+        model.addAttribute("w", writer);
         return "post/write";
     }
 
