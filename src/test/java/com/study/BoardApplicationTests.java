@@ -10,10 +10,11 @@ import org.springframework.context.ApplicationContext;
 class BoardApplicationTests {
 
     @Autowired
-    private ApplicationContext context;
+    ApplicationContext context;
 
     @Autowired
-    private SqlSessionFactory sessionFactory;
+    SqlSessionFactory sessionFactory;
+
 
     @Test
     void contextLoads() {
