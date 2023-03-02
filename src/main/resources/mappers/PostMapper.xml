@@ -71,15 +71,27 @@
 
 
     <!-- 게시글 리스트 조회 -->
-    <select id="findAll" resultType="com.study.domain.post.PostResponse">
+    <select id="findAll" parameterType="com.study.common.dto.SearchDto" resultType="com.study.domain.post.PostResponse">
         SELECT
-            <include refid="postColumns" />
+        <include refid="postColumns" />
         FROM
-            tb_post
+        tb_post
         WHERE
-            delete_yn = 0
+        delete_yn = 0
         ORDER BY
-            id DESC
+        id DESC
+        LIMIT #{pagination.limitStart}, #{recordSize}
+    </select>
+
+
+    <!-- 게시글 수 카운팅 -->
+    <select id="count" parameterType="com.study.common.dto.SearchDto" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        tb_post
+        WHERE
+        delete_yn = 0
     </select>
 
 </mapper>
