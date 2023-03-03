@@ -112,25 +112,31 @@
         }
 
 
-    // 리스트 HTML draw
-    function drawList(list, num) {
+// 리스트 HTML draw
+function drawList(list, num) {
 
-      let html = '';
+    let html = '';
 
-      list.forEach(row => {
+    list.forEach(row => {
         html += `
             <tr>
                 <td><input type="checkbox" /></td>
                 <td>${row.noticeYn === false ? num-- : '공지'}</td>
-                <td class="tl"><a href="/post/view.do?id=${row.id}">${row.title}</a></td>
+                <td class="tl"><a href="javascript:void(0);" onclick="goViewPage(${row.id});">${row.title}</a></td>
                 <td>${row.writer}</td>
                 <td>${dayjs(row.createdDate).format('YYYY-MM-DD HH:mm')}</td>
                 <td>${row.viewCnt}</td>
             </tr>
         `;
-      })
+    })
 
-      document.getElementById('list').innerHTML = html;
+    document.getElementById('list').innerHTML = html;
+}
+
+    // 게시글 상세 페이지로 이동
+    function goViewPage(id) {
+        const queryString = (location.search) ? location.search + `&id=${id}` : `?id=${id}`;
+        location.href = '/post/view.do' + queryString;
     }
 
 

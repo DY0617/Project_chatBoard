@@ -42,9 +42,9 @@
         </tbody>
       </table>
       <p class="btn_set">
-        <a th:href="@{/post/write.do( id=${post.id} )}" class="btns btn_bdr4 btn_mid">수정</a>
+        <button type="button" onclick="goWritePage();" class="btns btn_bdr4 btn_mid">수정</button>
         <button type="button" onclick="deletePost();" class="btns btn_bdr1 btn_mid">삭제</button>
-        <a th:href="@{/post/list.do}" class="btns btn_bdr3 btn_mid">뒤로</a>
+        <button type="button" onclick="goListPage();" class="btns btn_bdr3 btn_mid">뒤로</button>
       </p>
     </section>
   </div> <!--/* .content */-->
@@ -54,24 +54,43 @@
   <script th:inline="javascript">
     /*<![CDATA[*/
 
-    // 게시글 삭제
-    function deletePost() {
-      const id = [[ ${post.id} ]];
+ // 게시글 삭제
+        function deletePost() {
 
-      if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
-        return false;
-      }
+            const id = [[ ${post.id} ]];
+            if ( !confirm(id + "번 게시글을 삭제할까요?") ) {
+                return false;
+            }
 
-      const formHtml = `
-          <form id="deleteForm" action="/post/delete.do" method="post">
-              <input type="hidden" id="id" name="id" value="${id}" />
-          </form>
-      `;
-      const doc = new DOMParser().parseFromString(formHtml, 'text/html');
-      const form = doc.body.firstChild;
-      document.body.append(form);
-      document.getElementById('deleteForm').submit();
-    }
+            let inputHtml = '';
+            new URLSearchParams(location.search).forEach((value, key) => {
+                inputHtml += `<input type="hidden" name="${key}" value="${value}" />`;
+            })
+
+            const formHtml = `
+                <form id="deleteForm" action="/post/delete.do" method="post">
+                    ${inputHtml}
+                </form>
+            `;
+
+            const doc = new DOMParser().parseFromString(formHtml, 'text/html');
+            const form = doc.body.firstChild;
+            document.body.append(form);
+            document.getElementById('deleteForm').submit();
+        }
+
+
+            // 게시글 리스트 페이지로 이동
+        function goListPage() {
+            const queryString = new URLSearchParams(location.search);
+            queryString.delete('id');
+            location.href = '/post/list.do' + '?' + queryString.toString();
+        }
+
+                // 게시글 수정 페이지로 이동
+        function goWritePage() {
+            location.href = '/post/write.do' + location.search;
+        }
 
     /*]]>*/
   </script>
