@@ -16,13 +16,14 @@
       <div class="search_box">
         <form id="searchForm" onsubmit="return false;" autocomplete="off">
           <div class="sch_group fl">
-            <select title="검색 유형 선택">
+            <select id="searchType" name="searchType" title="검색 유형 선택">
               <option value="">전체 검색</option>
-              <option value="">제목</option>
-              <option value="">내용</option>
+              <option value="title">제목</option>
+              <option value="content">내용</option>
+              <option value="writer">작성자</option>
             </select>
-            <input type="text" placeholder="키워드를 입력해 주세요." title="키워드 입력" />
-            <button type="button" class="bt_search"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
+            <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해 주세요." title="키워드 입력" />
+            <button type="button" class="bt_search" onclick="movePage(1);"><i class="fas fa-search"></i><span class="skip_info">검색</span></button>
           </div>
         </form>
       </div>
@@ -86,6 +87,29 @@
       drawList(list, num);
       drawPage(pagination, params);
     }
+
+        window.onload = () => {
+            setQueryStringParams();
+
+            findAllPost();
+        }
+
+
+        // 쿼리 스트링 파라미터 셋팅
+        function setQueryStringParams() {
+
+            if ( !location.search ) {
+                return false;
+            }
+
+            const form = document.getElementById('searchForm');
+
+            new URLSearchParams(location.search).forEach((value, key) => {
+                if (form[key]) {
+                    form[key].value = value;
+                }
+            })
+        }
 
 
     // 리스트 HTML draw
@@ -151,13 +175,16 @@
 
     // 페이지 이동
     function movePage(page) {
-      const queryParams = {
-        page: (page) ? page : 1,
-        recordSize: 20,
-        pageSize: 10
-      }
-      location.href = location.pathname + '?' + new URLSearchParams(queryParams).toString();
+    const form = document.getElementById('searchForm');
+    const queryParams = {
+          page: (page) ? page : 1
+        , recordSize: 20
+        , pageSize: 10
+        , searchType: form.searchType.value
+        , keyword: form.keyword.value
     }
+    location.href = location.pathname + '?' + new URLSearchParams(queryParams).toString();
+}
 
     /*]]>*/
   </script>
