@@ -76,4 +76,9 @@ public class PostService {
         return new PagingResponse<>(list, pagination);
     }
 
+    @Transactional
+    public int updateView(Long id) {
+        return postMapper.updateView(id);
+    }
+
 }

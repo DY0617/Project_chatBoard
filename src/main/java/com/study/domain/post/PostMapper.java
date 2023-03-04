@@ -2,6 +2,8 @@ package com.study.domain.post;
 
 import com.study.common.dto.SearchDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -47,4 +49,5 @@ public interface PostMapper {
      */
     int count(SearchDto params);
 
+    int updateView(Long id);
 }

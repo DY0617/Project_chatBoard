@@ -48,6 +48,7 @@ public class PostController {
     @GetMapping("/post/view.do")
     public String openPostView(@RequestParam final Long id, Model model) {
         PostResponse post = postService.findPostById(id);
+        postService.updateView(id);
         model.addAttribute("post", post);
         return "post/view";
     }
@@ -86,5 +87,6 @@ public class PostController {
         data.put("searchType", queryParams.getSearchType());
         return data;
     }
+
 
 }

@@ -43,6 +43,7 @@
             tb_post
         WHERE
             id = #{value}
+
     </select>
 
 
@@ -57,6 +58,14 @@
             , notice_yn = #{noticeYn}
         WHERE
             id = #{id}
+    </update>
+
+    <update id="updateView">
+        UPDATE tb_post
+        SET
+        view_cnt = view_cnt+1
+        WHERE
+        id = #{id}
     </update>
 
 
