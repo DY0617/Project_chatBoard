@@ -3,6 +3,13 @@
 
 <mapper namespace="com.study.domain.user.UserMapper">
 
-
+    <!-- tb_comment 테이블 전체 컬럼 -->
+    <sql id="userColumns">
+        id
+        , username
+        , nickname
+        , password
+        , email
+    </sql>
 
 </mapper>
