@@ -54,14 +54,14 @@
     <div id="comment">
     </div>
 
-    <form action="#" th:action="@{/board/comment/write}" method="post">
-      <input type="hidden" name="boardId" th:value="${board.id}">
+    <form action="#" th:action="@{/domain/comment/write}" method="post">
+      <input type="hidden" name="boardId" th:value="${id}">
       <div class="mb-3">
         <label for="content" class="form-label"></label>
         <textarea class="form-control" id="content" name="content" rows="4"
                   placeholder="댓글을 작성해주세요."></textarea>
       </div>
-      <button type="submit" class="me-2 btn btn-primary">write</button>
+      <button type="submit" class="me-2 btn btn-primary">댓글 작성</button>
     </form>
   </div>
 
