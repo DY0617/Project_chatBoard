@@ -1,6 +1,7 @@
 package com.study.domain.user;
 
 import com.study.common.dto.UserDto;
+import com.study.common.security.auth.LoginUser;
 import com.study.common.validator.CustomValidators;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
