@@ -66,22 +66,23 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script th:inline="javascript">
         $(document).ready(function () {
-            getComments();
+            getComments()
         })
 
         function getComments() {
             var loginUsername = [[${ loginUser }]]
             var boardId = $('input[name=boardId]').val()
+            var url = '/comments/' + boardId
 
             $.ajax({
                 type: 'GET',
-                url: '/board/comment/getCommentList',
-                data: { boardId },
+                url: url,
                 success: function (response) {
-                    var a = '';
-                    var size = 0;
+                    var a = ''
+                    var size = 0
                     $.each(response, function (key, value) {
                         size = size + 1;
                         a += '<hr /><div>'
@@ -93,21 +94,46 @@
                             a += '<li name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="deleteComment(' + value.id + ')">삭제</li></ul>'
                         }
                         a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">' + value.content + '</pre>'
-                        a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + value.createDate.substring(0, 10) + ' ' + value.createDate.substring(11, 19) + '</p></div>'
+                        a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + moment(value.createDate).format("YYYY-MM-DD HH:mm") + '</p></div>'
                     });
                     $("#count").html(size)
                     $("#comment").html(a)
                 },
                 error: function (response) {
-                    console.log("error : " + response)
+                    console.log("getComments error : " + response)
                 },
                 complete: function () { }
             })
         }
 
+        function insertComment() {
+            var boardId = $('input[name=boardId]').val()
+            var content = document.getElementById("content").value
+            var param = {"content": content}
+            var url = '/comments/' + boardId
+
+            if (isEmpty(content) == true) {
+                alert('댓글을 입력해주세요.')
+                return false;
+            } else {
+                $.ajax({
+                    contentType: 'application/json',
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify(param),
+                    success: function (response) {
+                        getComments()
+                    },
+                    error: function (response) {
+                        console.log("insertComment error : " + response)
+                    },
+                })
+            }
+        }
+
         function updateCommentForm(id) {
-            var commentId = id;
-            var content = document.getElementById(id).innerText;
+            var commentId = id
+            var content = document.getElementById(id).innerText
 
             $('ul[name=commentChange]').hide()
             $('pre[name=comment' + commentId + ']').contents().unwrap().wrap('<textarea id="newComment" class="form-control mt-2" name="updateContent" rows="4"></textarea>');
@@ -116,44 +142,63 @@
         }
 
         function updateComment(id) {
-            var commentId = id;
-            var content = document.getElementById("newComment").value;
+            var commentId = id
+            var content = document.getElementById("newComment").value
+            var param = {"content": content}
+            var url = '/comments/' + commentId
 
-            $.ajax({
-                type: 'POST',
-                url: '/board/comment/update',
-                data: {
-                    commentId:commentId,
-                    content:content
-                },
-                success: function (response) {
-                    getComments()
-                },
-                error: function (response) {
-                    console.log("update error : " + response)
-                },
-                complete: function () { }
-            })
-        }
-
-        function deleteComment(id) {
-            var commentId = id;
-
-            if (confirm("정말 삭제하시겠습니까?")) {
+            if (isEmpty(content) == true) {
+                alert('댓글을 입력해주세요.')
+                return false;
+            } else {
                 $.ajax({
-                    type: 'POST',
-                    url: '/board/comment/delete',
-                    data: { commentId },
+                    contentType: 'application/json',
+                    type: 'PATCH',
+                    url: url,
+                    data: JSON.stringify(param),
                     success: function (response) {
                         getComments()
                     },
                     error: function (response) {
-                        console.log("delete error : " + response)
+                        console.log("updateComment error : " + response)
+                    },
+                    complete: function () { }
+                })
+            }
+        }
+
+        function deleteComment(id) {
+            var commentId = id
+            var url = '/comments/' + commentId
+
+            if (confirm("정말 삭제하시겠습니까?")) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: url,
+                    success: function (response) {
+                        getComments()
+                    },
+                    error: function (response) {
+                        console.log("deleteComment error : " + response)
                     },
                     complete: function () { }
                 })
             } else {
                 return;
+            }
+        }
+        function isEmpty(strIn) {
+            if (strIn === undefined) {
+                return true;
+            }
+            else if (strIn == null) {
+                return true;
+            }
+            else if (strIn == "") {
+                return true;
+            }
+            else {
+                return false;
             }
         }
     </script>
