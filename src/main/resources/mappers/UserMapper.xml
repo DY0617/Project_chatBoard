@@ -14,8 +14,18 @@
         , modified_date
     </sql>
 
-    <insert id="save">
-
+    <insert id="save" parameterType="com.study.domain.user.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_user (
+        <include refid="userColumns" />
+        ) VALUES (
+        #{id}
+        , #{username}
+        , #{nickname}
+        , #{password}
+        , #{email}
+        , NOW()
+        , NULL
+        )
     </insert>
 
 </mapper>
