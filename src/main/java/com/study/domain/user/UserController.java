@@ -70,7 +70,7 @@ public class UserController {
                         Model model) {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
-        return "/user/user-login";
+        return "/user/login";
     }
 
     /* Security에서 로그아웃은 기본적으로 POST지만, GET으로 우회 */
