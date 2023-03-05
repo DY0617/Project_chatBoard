@@ -74,7 +74,7 @@ public class UserDto {
             this.nickname = user.getNickname();
             this.email = user.getEmail();
             this.role = user.getRole();
-            this.modifiedDate = user.getModifiedDate();
+            this.modifiedDate = String.valueOf(user.getModifiedDate());
         }
     }
 }

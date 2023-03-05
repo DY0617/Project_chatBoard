@@ -8,7 +8,7 @@ import java.util.Optional;
 @Mapper
 public interface UserMapper {
 
-    void save(User toEntity);
+    User save(User toEntity);
 
     Optional<User> findById(Long id);
 
@@ -17,4 +17,6 @@ public interface UserMapper {
     boolean existsByNickname(String nickname);
 
     boolean existsByUsername(String username);
+
+    Optional<User> findByUsername(String username);
 }

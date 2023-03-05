@@ -12,6 +12,7 @@
         , delete_yn
         , created_date
         , modified_date
+        , user_id
     </sql>
 
 
@@ -21,12 +22,13 @@
         <include refid="commentColumns" />
         ) VALUES (
         #{id}
-        #{postId}
+        , #{postId}
         , #{content}
         , #{writer}
         , 0
         , NOW()
         , NULL
+        , #{userId}
         )
     </insert>
 

@@ -3,13 +3,14 @@ package com.study.domain.user;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Entity
-public class User extends BaseTimeEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +32,9 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
+    private LocalDateTime createdDate;     // 생성일시
+    private LocalDateTime modifiedDate;    // 최종 수정일시
+
     /* 회원정보 수정 */
     public void modify(String nickname, String password) {
         this.nickname = nickname;
@@ -40,7 +44,7 @@ public class User extends BaseTimeEntity {
     /* 소셜로그인시 이미 등록된 회원이라면 수정날짜만 업데이트해줘서
      * 기존 데이터를 보존하도록 예외처리 */
     public User updateModifiedDate() {
-        this.onPreUpdate();
+        this.modifiedDate = LocalDateTime.now();
         return this;
     }
 

@@ -14,6 +14,7 @@
         , delete_yn
         , created_date
         , modified_date
+        , user_id
     </sql>
 
 
@@ -31,6 +32,7 @@
             , 0
             , NOW()
             , NULL
+            , #{userId}
         )
     </insert>
 
