@@ -42,13 +42,28 @@ public class UserController {
 
     @GetMapping
     public String root() {
-        return "redirect:/auth/login";
+        return "redirect:/post/list.do";
     }
 
     @GetMapping("/auth/join")
     public String join() {
         return "/user/join";
     }
+
+
+    @GetMapping("/user_access")
+    public String userAccess(Model model, Authentication authentication) {
+        //Authentication 객체를 통해 유저 정보를 가져올 수 있다.
+        User user = (User) authentication.getPrincipal();  //userDetail 객체를 가져옴
+        model.addAttribute("nickname",user.getNickname()+ "님");      //유저 아이디
+        return "redirect:/post/list.do";
+    }
+
+    @GetMapping("/user_denied")
+    public String accessDenied() {
+        return "/user/user_denied";
+    }
+
 
     /* 회원가입 */
 
