@@ -6,8 +6,7 @@
 
 <th:block layout:fragment="content">
     <div class="page_tits">
-        <h3>게시판 관리</h3>
-        <p class="path"><strong>현재 위치 :</strong> <span>게시판 관리</span> <span>리스트형</span> <span>글작성</span></p>
+        <h3>로그인</h3>
     </div>
 
 
@@ -19,7 +18,7 @@
             <div th:if="${param.logout}">
                 You have been logged out.</div>
 
-            <form action="@{/login}" method="post">
+            <form action="/loginProc" method="post">
                 <div class="form-group">
                     <label>아이디</label>
                     <input type="text" class="form-control" name="username" placeholder="아이디를 입력해주세요">
