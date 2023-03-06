@@ -28,4 +28,52 @@
         )
     </insert>
 
+    <select id="findById" resultType="com.study.domain.user.User">
+        SELECT
+        <include refid="userColumns" />
+        FROM
+        tb_user
+        WHERE
+        id = #{value}
+    </select>
+
+    <select id="findByUsername" resultType="com.study.domain.user.User">
+        SELECT
+        <include refid="userColumns" />
+        FROM
+        tb_user
+        WHERE
+        username = #{value}
+    </select>
+
+    <select id="existsByEmail" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+        SELECT
+        IF(COUNT(*) = 1, 1, 0)
+        FROM
+        tb_user
+        WHERE
+        email = #{value}
+    </select>
+
+    <select id="existsByNickname" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+        SELECT
+        IF(COUNT(*) = 1, 1, 0)
+        FROM
+        tb_user
+        WHERE
+        nickname = #{value}
+    </select>
+
+    <select id="existsByUsername" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+        SELECT
+        IF(COUNT(*) = 1, 1, 0)
+        FROM
+        tb_user
+        WHERE
+        username = #{value}
+    </select>
+
+
+
+
 </mapper>
