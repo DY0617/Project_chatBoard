@@ -5,12 +5,12 @@
     <header>
         <div class="head">
             <h1>Chat Board</h1>
-            <div th:if="${user!=null}">
+            <div th:if="${user!=null}" style="float: right;">
                     <span class="mx-3">{{user}}님 안녕하세요!</span>
                      <a href="/logout" class="btn btn-outline-dark">로그아웃</a>
                     <a href="/" class="btn btn-outline-dark bi bi-gear"></a>
             </div>
-            <div th:unless="${user!=null}">
+            <div th:unless="${user!=null}" style="float: right;">
                     <a href="/auth/login" role="button" class="btn btn-outline-dark bi bi-person-circle"> 로그인</a>
                     <a href="/auth/join" role="button" class="btn btn-outline-dark"> 회원가입</a>
             </div>
