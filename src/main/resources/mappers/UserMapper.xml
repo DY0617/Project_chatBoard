@@ -3,7 +3,7 @@
 
 <mapper namespace="com.study.domain.user.UserMapper">
 
-    <!-- tb_comment 테이블 전체 컬럼 -->
+    <!-- tb_user 테이블 전체 컬럼 -->
     <sql id="userColumns">
         id
         , username
@@ -34,7 +34,7 @@
         FROM
         tb_user
         WHERE
-        id = #{value}
+        id = #{id}
     </select>
 
     <select id="findByUsername" resultType="com.study.domain.user.User">
@@ -43,7 +43,7 @@
         FROM
         tb_user
         WHERE
-        username = #{value}
+        username = #{username}
     </select>
 
     <select id="existsByEmail" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">

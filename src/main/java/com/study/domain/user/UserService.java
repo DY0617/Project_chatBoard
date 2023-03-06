@@ -4,6 +4,7 @@ package com.study.domain.user;
 
 import com.study.common.dto.UserDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.validation.FieldError;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -51,5 +53,15 @@ public class UserService {
 
         String encPassword = encoder.encode(dto.getPassword());
         user.modify(dto.getNickname(), encPassword);
+    }
+
+
+    public Optional<User> loadUserByUsername(String userId) throws UsernameNotFoundException {
+        //여기서 받은 유저 패스워드와 비교하여 로그인 인증
+        Optional<User> user = userMapper.findByUsername(userId);
+        if (user == null){
+            throw new UsernameNotFoundException("User not authorized.");
+        }
+        return user;
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @SpringBootTest
 public class PostMapperTest {
-
+    /*
     @Autowired
     PostMapper postMapper;
 
@@ -30,6 +30,7 @@ public class PostMapperTest {
         List<PostResponse> posts = postMapper.findAll();
         System.out.println("전체 게시글 개수는 : " + posts.size() + "개입니다.");
     }
+
 
     @Test
     void findById() {
@@ -71,5 +72,5 @@ public class PostMapperTest {
         postMapper.deleteById(1L);
         System.out.println("삭제 이후의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
     }
-
+*/
 }

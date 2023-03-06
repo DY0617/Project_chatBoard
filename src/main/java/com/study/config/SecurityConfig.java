@@ -49,18 +49,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
         .csrf().disable()
         .authorizeRequests()
-        .antMatchers("/", "/auth/**", "/posts/read/**", "/posts/search/**")
+        .antMatchers("/post/list.do", "/auth/**")
         .permitAll()
         .anyRequest()
         .authenticated()
         .and()
         .formLogin()
         .loginPage("/auth/login")
-        .loginProcessingUrl("loginProc")
-        .defaultSuccessUrl("/")
-        .and()
+        .loginProcessingUrl("auth/loginProc")
+        .defaultSuccessUrl("/user/user_access")
+            .failureUrl("/user/user_denied")
+            .and()
         .logout()
-        .logoutSuccessUrl("/")
-        .invalidateHttpSession(true);
+        .logoutSuccessUrl("/post/list.do")
+        .invalidateHttpSession(true)
+            .and()
+                    .csrf().disable();
   }
+
 }

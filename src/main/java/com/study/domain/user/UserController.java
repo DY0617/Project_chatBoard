@@ -40,6 +40,11 @@ public class UserController {
         binder.addValidators(UsernameValidator);
     }
 
+    @GetMapping
+    public String root() {
+        return "redirect:/auth/login";
+    }
+
     @GetMapping("/auth/join")
     public String join() {
         return "/user/join";
@@ -65,11 +70,7 @@ public class UserController {
     }
 
     @GetMapping("/auth/login")
-    public String login(@RequestParam(value = "error", required = false)String error,
-                        @RequestParam(value = "exception", required = false)String exception,
-                        Model model) {
-        model.addAttribute("error", error);
-        model.addAttribute("exception", exception);
+    public String login() {
         return "/user/login";
     }
 
@@ -90,6 +91,6 @@ public class UserController {
         if (user != null) {
             model.addAttribute("user", user);
         }
-        return "/user/user-modify";
+        return "/user/modify";
     }
 }
