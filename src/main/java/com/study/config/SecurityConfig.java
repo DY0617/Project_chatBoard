@@ -57,14 +57,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin()
         .loginPage("/auth/login")
         .loginProcessingUrl("/auth/loginProc")
-        .defaultSuccessUrl("/")
-            .failureUrl("/user_denied")
+        .defaultSuccessUrl("/user/user_access.do")
+            .failureUrl("/user/user_denied")
             .and()
         .logout()
         .logoutSuccessUrl("/post/list.do")
-        .invalidateHttpSession(true)
-            .and()
-                    .csrf().disable();
+        .invalidateHttpSession(true);
   }
 
 }

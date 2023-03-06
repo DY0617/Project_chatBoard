@@ -25,6 +25,11 @@ public class CustomUserDetails implements UserDetails {
         return user.getUsername();
     }
 
+
+    public String getNickname() {
+        return user.getNickname();
+    }
+
     /* 계정 만료 여부
      *  true : 만료 안됨
      *  false : 만료
