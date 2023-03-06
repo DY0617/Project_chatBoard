@@ -2,10 +2,17 @@ package com.study.domain.post;
 
 import com.study.common.dto.MessageDto;
 import com.study.common.dto.SearchDto;
+import com.study.common.dto.UserDto;
+import com.study.common.security.auth.LoginUser;
 import com.study.domain.user.User;
 import com.study.domain.user.UserService;
 import com.study.paging.PagingResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +26,7 @@ import java.util.Map;
 public class PostController {
 
     private final PostService postService;
+
 
 
     // 사용자에게 메시지를 전달하고, 페이지를 리다이렉트 한다.
@@ -40,8 +48,11 @@ public class PostController {
 
     // 게시글 리스트 페이지
     @GetMapping("/post/list.do")
-    public String openPostList(@ModelAttribute("params") final SearchDto params, Model model) {
+    public String openPostList(@ModelAttribute("params") final SearchDto params, Model model,@LoginUser UserDto.Response user) {
         PagingResponse<PostResponse> response = postService.findAllPost(params);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         model.addAttribute("response", response);
         return "post/list";
     }

@@ -52,14 +52,6 @@ public class UserController {
     }
 
 
-    @GetMapping("/user/user_access.do")
-    public String userAccess(Model model, Authentication authentication) {
-        //Authentication 객체를 통해 유저 정보를 가져올 수 있다.
-        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();  //userDetail 객체를 가져옴
-        model.addAttribute("nickname",user.getNickname()+"님");      //유저 아이디
-        return "redirect:/post/list.do";
-    }
-
     @GetMapping("/user_denied")
     public String accessDenied() {
         return "/user/user_denied";
