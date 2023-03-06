@@ -38,10 +38,13 @@ public class PostController {
 
     // 게시글 작성 페이지
     @GetMapping("/post/write.do")
-    public String openPostWrite(@RequestParam(value = "id", required = false) final Long id, Model model) {
+    public String openPostWrite(@RequestParam(value = "id", required = false) final Long id, Model model,@LoginUser UserDto.Response user) {
         if (id != null) {
             PostResponse post = postService.findPostById(id);
             model.addAttribute("post", post);
+        }
+        if (user != null) {
+            model.addAttribute("user", user);
         }
         return "post/write";
     }
@@ -59,33 +62,45 @@ public class PostController {
 
     // 게시글 상세 페이지
     @GetMapping("/post/view.do")
-    public String openPostView(@RequestParam final Long id, Model model) {
+    public String openPostView(@RequestParam final Long id, Model model,@LoginUser UserDto.Response user) {
         PostResponse post = postService.findPostById(id);
         postService.updateView(id);
         model.addAttribute("post", post);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         return "post/view";
     }
 
     // 신규 게시글 생성
     @PostMapping("/post/save.do")
-    public String savePost(final PostRequest params, Model model) {
+    public String savePost(final PostRequest params, Model model,@LoginUser UserDto.Response user) {
         postService.savePost(params);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
     // 기존 게시글 수정
     @PostMapping("/post/update.do")
-    public String updatePost(final PostRequest params, Model model) {
+    public String updatePost(final PostRequest params, Model model,@LoginUser UserDto.Response user) {
         postService.updatePost(params);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list.do", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
     // 게시글 삭제
     @PostMapping("/post/delete.do")
-    public String deletePost(@RequestParam final Long id, final SearchDto queryParams, Model model) {
+    public String deletePost(@RequestParam final Long id, final SearchDto queryParams, Model model,@LoginUser UserDto.Response user) {
         postService.deletePost(id);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list.do", RequestMethod.GET, queryParamsToMap(queryParams));
         return showMessageAndRedirect(message, model);
     }
