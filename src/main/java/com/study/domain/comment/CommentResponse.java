@@ -15,5 +15,6 @@ public class CommentResponse {
     private Boolean deleteYn;              // 삭제 여부
     private LocalDateTime createdDate;     // 생성일시
     private LocalDateTime modifiedDate;    // 최종 수정일시
+    private Long userId;
 
 }

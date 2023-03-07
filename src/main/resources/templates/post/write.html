@@ -37,8 +37,8 @@
           </tr>
 
           <tr>
-            <th>이름 <span class="es">필수 입력</span></th>
-            <td colspan="3"><input type="text" id="writer" name="writer" maxlength="10" placeholder="이름을 입력해 주세요."/></td>
+            <th scope="row">닉네임</th>
+            <td colspan="3"><input type="text" id="writer" name="writer" readonly/></td>
           </tr>
 
           <tr>
@@ -70,6 +70,10 @@
             document.getElementById('createdDate').value = dayjs().format('YYYY-MM-DD');
         }
 
+        function initWriter() {
+            document.getElementById('writer').value = [[${user.nickname}]];
+        }
+
 
         // 게시글 상세정보 렌더링
         function renderPostInfo() {
@@ -77,13 +81,15 @@
 
             if (!post) {
                 initCreatedDate();
+                initWriter();
                 return false;
             }
 
             const form = document.getElementById('saveForm');
-            const fields = ['id', 'title', 'content', 'writer', 'noticeYn'];
+            const fields = ['id', 'title', 'content', 'noticeYn','userId'];
             form.isNotice.checked = post.noticeYn;
             form.createdDate.value = dayjs(post.createdDate).format('YYYY-MM-DD HH:mm');
+            form.writer.value=[[${user.nickname}]];
 
             fields.forEach(field => {
                 form[field].value = post[field];
@@ -108,6 +114,7 @@
                 input.value = value;
                 form.append(input);
             })
+
 
             document.getElementById('saveBtn').disabled = true;
             form.noticeYn.value = form.isNotice.checked;
