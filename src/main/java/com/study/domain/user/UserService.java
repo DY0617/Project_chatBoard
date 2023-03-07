@@ -57,7 +57,12 @@ public class UserService {
         user.modify(dto.getNickname(), encPassword);
     }
 
-    public void updateMember(User user) {
+    @Transactional
+    public void updateMember(UserDto.Request dto) {
+        User user = userMapper.findById(dto.toEntity().getId()).orElseThrow(() ->
+                new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+        String encPassword = encoder.encode(dto.getPassword());
+        user.modify(dto.getNickname(), encPassword);
         userMapper.userUpdate(user);
     }
 }

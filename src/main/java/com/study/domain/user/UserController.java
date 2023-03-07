@@ -100,7 +100,10 @@ public class UserController {
     }
 
     @RequestMapping("/modify/update.do")
-    public String modifyUpdate(@ModelAttribute User user){
+    public String modifyUpdate(@ModelAttribute UserDto.Request user){
+        System.out.println(user.getNickname());
+        System.out.println(user.getPassword());
+        System.out.println(user.getId());
         userService.updateMember(user);
         return "redirect:/";
     }

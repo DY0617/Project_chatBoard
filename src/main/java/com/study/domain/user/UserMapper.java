@@ -1,6 +1,7 @@
 package com.study.domain.user;
 
 
+import com.study.common.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Optional;

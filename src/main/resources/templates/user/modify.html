@@ -19,9 +19,8 @@
         <div class="container col-md-6">
 
 
-            <form id="modifyForm">
-                <input type="hidden" id="id" th:value="${user.id}"/>
-                <input type="hidden" id="modifiedDate" value="${user.modifiedDate}"/>
+            <form id="modifyForm" action="/modify/update.do">
+                <input type="hidden" id="id" name="id" th:value="${user.id}"/>
 
                 <div class="form-group">
                     <label th:for="password">이메일(변경이 불가능합니다)<br></label>
@@ -79,16 +78,6 @@
             return false;
         } else if(!/^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$/.test(data.nickname.value)) {
             alert("닉네임은 특수문자를 제외한 2~10자리여야 합니다.");
-            return false;
-        }
-
-                const con_check = confirm("회원 정보를 수정하시겠습니까?");
-
-        if (con_check === true) {
-        data.action="/modify/update.do";
-        data.submit();
-        alert("수정이 완료되었습니다.");
-        } else {
             return false;
         }
 
