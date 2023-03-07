@@ -19,4 +19,6 @@ public interface UserMapper {
     boolean existsByUsername(String username);
 
     Optional<User> findByUsername(String username);
+
+    void userUpdate(User user);
 }

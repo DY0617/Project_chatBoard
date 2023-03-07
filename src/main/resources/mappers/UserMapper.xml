@@ -28,6 +28,16 @@
         )
     </insert>
 
+    <update id="userUpdate" parameterType="com.study.domain.user.User">
+        UPDATE tb_user
+        SET
+        modified_date = NOW()
+        , nickname = #{nickname}
+        , password = #{password}
+        WHERE
+        id = #{id}
+    </update>
+
     <select id="findById" resultType="com.study.domain.user.User">
         SELECT
         <include refid="userColumns" />

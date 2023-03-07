@@ -1,9 +1,11 @@
 package com.study.domain.user;
 
 
-
 import com.study.common.dto.UserDto;
+import com.study.common.security.auth.CustomUserDetails;
+import com.study.domain.post.PostRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -54,4 +56,10 @@ public class UserService {
         String encPassword = encoder.encode(dto.getPassword());
         user.modify(dto.getNickname(), encPassword);
     }
+
+    public void updateMember(User user) {
+        userMapper.userUpdate(user);
+    }
 }
+
+

@@ -44,7 +44,7 @@
                 </div>
 
 
-                <button type="submit" onclick="modifyUser();" class="btns btn_bdr2 btn_mid"> 회원정보 변경</button>
+                <button type="submit" onclick="modifyUser()" class="btns btn_bdr2 btn_mid"> 회원정보 변경</button>
                 <a href="/" role="button" class="btns btn_bdr3 btn_mid">목록</a>
             </form>
         </div>
@@ -59,8 +59,39 @@
         /*<![CDATA[*/
 
 
+
+
             function modifyUser(){
-                
+
+                const data=document.getElementById('modifyForm');
+
+                data.id.value=document.getElementById("id").value;
+                data.nickname.value=document.getElementById("nickname").value;
+                data.password.value=document.getElementById("password").value;
+
+
+
+                if(!data.nickname.value || data.nickname.value.trim() === "" || !data.password.value || data.password.value.trim() === "") {
+            alert("공백 또는 입력하지 않은 부분이 있습니다.");
+            return false;
+        } else if(!/(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[#?!@$%^&*-]).{8,16}/.test(data.password.value)) {
+            alert("비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+            return false;
+        } else if(!/^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$/.test(data.nickname.value)) {
+            alert("닉네임은 특수문자를 제외한 2~10자리여야 합니다.");
+            return false;
+        }
+
+                const con_check = confirm("회원 정보를 수정하시겠습니까?");
+
+        if (con_check === true) {
+        data.action="/modify/update.do";
+        data.submit();
+        alert("수정이 완료되었습니다.");
+        } else {
+            return false;
+        }
+
             }
 
         /*]]>*/

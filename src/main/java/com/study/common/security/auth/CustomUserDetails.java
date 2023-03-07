@@ -15,7 +15,7 @@ import java.util.Collection;
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    private final User user;
+    private User user;
 
     @Override
     public String getPassword() { return user.getPassword(); }
@@ -74,5 +74,9 @@ public class CustomUserDetails implements UserDetails {
         collectors.add(() -> "ROLE_"+user.getRole());
 
         return collectors;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
