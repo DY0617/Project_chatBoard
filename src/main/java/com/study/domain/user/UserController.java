@@ -1,5 +1,6 @@
 package com.study.domain.user;
 
+import com.study.common.dto.MessageDto;
 import com.study.common.dto.UserDto;
 import com.study.common.security.auth.CustomUserDetails;
 import com.study.common.security.auth.LoginUser;
@@ -36,6 +37,12 @@ public class UserController {
         binder.addValidators(EmailValidator);
         binder.addValidators(NicknameValidator);
         binder.addValidators(UsernameValidator);
+    }
+
+    // 사용자에게 메시지를 전달하고, 페이지를 리다이렉트 한다.
+    private String showMessageAndRedirect(final MessageDto params, Model model) {
+        model.addAttribute("params", params);
+        return "common/messageRedirect";
     }
 
     @GetMapping
@@ -100,12 +107,11 @@ public class UserController {
     }
 
     @RequestMapping("/modify/update.do")
-    public String modifyUpdate(@ModelAttribute UserDto.Request user){
-        System.out.println(user.getNickname());
-        System.out.println(user.getPassword());
-        System.out.println(user.getId());
+    public String modifyUpdate(@ModelAttribute UserDto.Request user,Model model){
         userService.updateMember(user);
-        return "redirect:/";
+
+        MessageDto message = new MessageDto("수정이 완료되었습니다. 로그아웃 합니다.", "/logout", RequestMethod.GET, null);
+        return showMessageAndRedirect(message, model);
     }
 
 }
