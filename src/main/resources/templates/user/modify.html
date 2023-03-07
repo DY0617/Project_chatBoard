@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<th:block layout:fragment="title">
+    <title>회원정보 수정</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>회원정보 수정</h3>
+    </div>
+
+
+    <div id="posts_list">
+        <div class="container col-md-6">
+
+
+            <form id="modifyForm">
+
+                <div class="form-group">
+                    <label th:for="password">이메일(변경이 불가능합니다)<br></label>
+                    <input type="text" class="form-control" name="email" th:value="${user.email}" style="width:400px;height:40px;" readonly/>
+                </div>
+
+                <div class="form-group">
+                    <label th:for="username">아이디(변경이 불가능합니다)<br></label>
+                    <input type="text" class="form-control" name="username" th:value="${user.username}" style="width:400px;height:40px;" readonly/>
+                </div>
+
+                <div class="form-group">
+                    <label th:for="password">비밀번호<br></label>
+                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 변경해주세요" style="width:400px;height:40px;">
+                </div>
+
+                <div class="form-group">
+                    <label th:for="nickname">닉네임<br></label>
+                    <input type="text" class="form-control" name="nickname" th:value="${user.nickname}" placeholder="변경하고 싶은 닉네임으로 입력해주세요" style="width:400px;height:40px;">
+                </div>
+
+
+                <button type="submit" class="btns btn_bdr2 btn_mid"> 회원정보 변경</button>
+            </form>
+        </div>
+    </div>
+
+</th:block>
+
+
+</html>

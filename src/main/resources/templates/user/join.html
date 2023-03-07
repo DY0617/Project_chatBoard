@@ -14,32 +14,32 @@
         
             <form id="joinForm" action="/auth/joinProc" method="post">
                 <div class="form-group">
-                    <label for="username">아이디</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="아이디를 입력해주세요">
+                    <label for="username">아이디<br></label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="아이디를 입력해주세요" style="width:400px;height:40px;">
                     <div th:if="${valid_username!=null}">
                         <span style="color:red;padding:5px;" th:text="${valid_username}"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력해주세요">
+                    <label for="password">비밀번호<br></label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력해주세요" style="width:400px;height:40px;">
                     <div th:if="${valid_password!=null}">
                         <span style="color:red;padding:5px;" th:text="${valid_password}"></span>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="nickname">닉네임</label>
-                    <input type="text" name="nickname" id="nickname" class="form-control" placeholder="닉네임을 입력해주세요">
+                    <label for="nickname">닉네임<br></label>
+                    <input type="text" name="nickname" id="nickname" class="form-control" placeholder="닉네임을 입력해주세요" style="width:400px;height:40px;">
                     <div th:if="${valid_nickname!=null}">
                         <span style="color:red;padding:5px;" th:text="${valid_nickname}"></span>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요">
+                    <label for="email">이메일<br></label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요" style="width:400px;height:40px;">
                     <div th:if="${valid_email!=null}">
                         <span style="color:red;padding:5px;" th:text="${valid_email}"></span>
                     </div>

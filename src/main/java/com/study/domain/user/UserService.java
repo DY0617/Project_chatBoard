@@ -45,7 +45,7 @@ public class UserService {
         return validatorResult;
     }
 
-    /* 회원수정 (dirty checking) */
+
     @Transactional
     public void modify(UserDto.Request dto) {
         User user = userMapper.findById(dto.toEntity().getId()).orElseThrow(() ->

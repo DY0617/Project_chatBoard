@@ -38,6 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
   }
+
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
+
   
           @Override
   public void configure(WebSecurity web) throws Exception {
@@ -64,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
         .logout()
         .logoutSuccessUrl("/post/list.do")
-        .invalidateHttpSession(true);
+        .invalidateHttpSession(true).deleteCookies("JSESSIONID");
   }
 
 }
