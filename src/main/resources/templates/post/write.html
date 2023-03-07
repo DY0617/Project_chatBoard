@@ -37,13 +37,14 @@
           </tr>
 
           <tr>
-            <th scope="row">닉네임</th>
+            <th>닉네임</th>
             <td colspan="3"><input type="text" id="writer" name="writer" readonly/></td>
+            <input type="hidden" id="userId" name="userId"/>
           </tr>
 
           <tr>
             <th>내용 <span class="es">필수 입력</span></th>
-            <td colspan="3"><textarea id="content" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요."></textarea></td>
+            <td colspan="3"><textarea id="content" name="content" cols="50" rows="20" placeholder="내용을 입력해 주세요."></textarea></td>
           </tr>
           </tbody>
         </table>
@@ -72,6 +73,7 @@
 
         function initWriter() {
             document.getElementById('writer').value = [[${user.nickname}]];
+            document.getElementById('userId').value = [[${user.id}]];
         }
 
 
@@ -86,10 +88,11 @@
             }
 
             const form = document.getElementById('saveForm');
-            const fields = ['id', 'title', 'content', 'noticeYn','userId'];
+            const fields = ['id', 'title', 'content', 'noticeYn','writer','userId'];
             form.isNotice.checked = post.noticeYn;
+
             form.createdDate.value = dayjs(post.createdDate).format('YYYY-MM-DD HH:mm');
-            form.writer.value=[[${user.nickname}]];
+
 
             fields.forEach(field => {
                 form[field].value = post[field];
@@ -101,7 +104,7 @@
         function savePost() {
             const form = document.getElementById('saveForm');
             const fields = [form.title, form.writer, form.content];
-            const fieldNames = ['제목', '이름', '내용'];
+            const fieldNames = ['제목', '닉네임', '내용'];
 
             for (let i = 0, len = fields.length; i < len; i++) {
                 isValid(fields[i], fieldNames[i]);
@@ -118,6 +121,7 @@
 
             document.getElementById('saveBtn').disabled = true;
             form.noticeYn.value = form.isNotice.checked;
+            form.userId.value=[[ ${user.id}]];
             form.action = [[ ${post == null}]] ? '/post/save.do' : '/post/update.do';
             form.submit();
         }
