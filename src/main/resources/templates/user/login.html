@@ -30,6 +30,10 @@
                     <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요">
                 </div>
 
+                <span th:if="${error!=null}">
+                    <p style="color:red;" th:text="${exception}"></p>
+                </span>
+
                 <button type="submit" class="btns btn_bdr2 btn_mid"> 로그인</button>
             </form>
         </div>

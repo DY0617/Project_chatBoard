@@ -54,14 +54,4 @@ public class UserService {
         String encPassword = encoder.encode(dto.getPassword());
         user.modify(dto.getNickname(), encPassword);
     }
-
-
-    public Optional<User> loadUserByUsername(String userId) throws UsernameNotFoundException {
-        //여기서 받은 유저 패스워드와 비교하여 로그인 인증
-        Optional<User> user = userMapper.findByUsername(userId);
-        if (user == null){
-            throw new UsernameNotFoundException("User not authorized.");
-        }
-        return user;
-    }
 }

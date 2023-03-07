@@ -27,6 +27,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomUserDetailsService customUserDetailsService;
+  private final AuthenticationFailureHandler customFailureHandler;
 
   @Bean
   public BCryptPasswordEncoder encoder() {
@@ -57,8 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin()
         .loginPage("/auth/login")
         .loginProcessingUrl("/auth/loginProc")
+            .failureHandler(customFailureHandler)
         .defaultSuccessUrl("/post/list.do")
-            .failureUrl("/user/user_denied")
+
             .and()
         .logout()
         .logoutSuccessUrl("/post/list.do")
