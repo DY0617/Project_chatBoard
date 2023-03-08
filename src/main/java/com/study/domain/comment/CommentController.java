@@ -37,7 +37,7 @@ public class CommentController {
 
 
     @RequestMapping(value="/{board_id}/comment.read", method=RequestMethod.GET)
-    public /*List<CommentsVO>*/ Map<String, Object> readCommentList(@PathVariable("board_id") Long board_id) throws Exception{
+    public Map<String, Object> readCommentList(@PathVariable("board_id") Long board_id) throws Exception{
         logger.info("글번호: " + board_id);
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -52,9 +52,6 @@ public class CommentController {
     @RequestMapping(value="/comment.insert", method=RequestMethod.POST)
     public String insertComments(@RequestBody CommentRequest comment) throws Exception {
         logger.info("글내용: " + comment.getContent());
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        Calendar cal = Calendar.getInstance();
         comment.setContent(comment.getContent().replace("\r\n", "<br>"));
         commentService.saveComment(comment);
         return "success";
