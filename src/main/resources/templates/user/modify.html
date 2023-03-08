@@ -19,7 +19,7 @@
         <div class="container col-md-6">
 
 
-            <form id="modifyForm" action="/modify/update.do">
+            <form id="modifyForm">
                 <input type="hidden" id="id" name="id" th:value="${user.id}"/>
 
                 <div class="form-group">
@@ -43,7 +43,7 @@
                 </div>
 
 
-                <button type="submit" onclick="modifyUser()" class="btns btn_bdr2 btn_mid"> 회원정보 변경</button>
+                <button onclick="modifyUser()" class="btns btn_bdr2 btn_mid"> 회원정보 변경</button>
                 <a href="/" role="button" class="btns btn_bdr3 btn_mid">목록</a>
             </form>
         </div>
@@ -80,6 +80,14 @@
         } else if(!/^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$/.test(data.nickname.value)) {
             alert("닉네임은 특수문자를 제외한 2~10자리여야 합니다.");
             $('#nickname').focus();
+            return false;
+        }
+
+                const con_check = confirm("수정하시겠습니까?");
+        if (con_check === true) {
+            data.action="/modify/update.do";
+            data.submit();
+        } else {
             return false;
         }
 
