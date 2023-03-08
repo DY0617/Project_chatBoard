@@ -49,15 +49,6 @@ public class UserService {
 
 
     @Transactional
-    public void modify(UserDto.Request dto) {
-        User user = userMapper.findById(dto.toEntity().getId()).orElseThrow(() ->
-                new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
-
-        String encPassword = encoder.encode(dto.getPassword());
-        user.modify(dto.getNickname(), encPassword);
-    }
-
-    @Transactional
     public void updateMember(UserDto.Request dto) {
         User user = userMapper.findById(dto.toEntity().getId()).orElseThrow(() ->
                 new IllegalArgumentException("해당 회원이 존재하지 않습니다."));

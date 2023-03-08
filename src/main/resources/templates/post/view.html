@@ -42,8 +42,8 @@
         </tbody>
       </table>
       <p class="btn_set">
-        <button type="button" onclick="goWritePage();" class="btns btn_bdr4 btn_mid">수정</button>
-        <button type="button" onclick="deletePost();" class="btns btn_bdr1 btn_mid">삭제</button>
+        <button th:if="${post.userId==user.id}" type="button" onclick="goWritePage();" class="btns btn_bdr4 btn_mid">수정</button>
+        <button th:if="${post.userId==user.id}" type="button" onclick="deletePost();" class="btns btn_bdr1 btn_mid">삭제</button>
         <button type="button" onclick="goListPage();" class="btns btn_bdr3 btn_mid">뒤로</button>
       </p>
     </section>
