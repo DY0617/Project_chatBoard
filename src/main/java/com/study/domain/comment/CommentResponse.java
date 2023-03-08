@@ -7,6 +7,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 public class CommentResponse {
 
     private Long id;                       // 댓글 번호 (PK)

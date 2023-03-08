@@ -79,4 +79,13 @@
         id DESC
     </select>
 
+    <select id="count" parameterType="long" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        tb_comment
+        WHERE
+        id = #{value}
+    </select>
+
 </mapper>

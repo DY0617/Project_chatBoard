@@ -69,4 +69,7 @@ public class CommentService {
         return commentMapper.findAll(postId);
     }
 
+    public int count(Long board_id) {
+        return commentMapper.count(board_id);
+    }
 }
