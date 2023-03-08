@@ -60,6 +60,12 @@ public class CommentController {
         return "success";
     }
 
+    @RequestMapping(value="/{board_id}/comment.delete/{comments_id}", method=RequestMethod.DELETE)
+    public String deleteComments(@PathVariable("board_id") int board_id, @PathVariable("comments_id") Long comments_id) throws Exception{
+        commentService.deleteComment(comments_id);
+        return "success";
+    }
+
 
 
 }
