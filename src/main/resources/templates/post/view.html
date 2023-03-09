@@ -55,7 +55,7 @@
     </div>
 
     <form>
-      <input type="hidden" name="boardId" th:value="${post.id}">
+      <input type="hidden" name="id" th:value="${post.id}">
       <div class="mb-3">
         <label for="content" class="form-label"></label>
         <textarea class="form-control" id="content" name="content" rows="4"
@@ -84,7 +84,7 @@
         		// 댓글 리스트 불러오기
 		function getComments() {
 			var loginUsername = [[${ user.nickname }]];
-			var boardId = $('input[name=boardId]').val();
+			var boardId = $('input[name=id]').val();
 			var url = '/comments/' + boardId;
 
 
@@ -118,7 +118,7 @@
 
 		// 댓글 작성
 		function insertComment() {
-			var boardId = $('input[name=boardId]').val();
+			var boardId = $('input[name=id]').val();
 			var content = document.getElementById("content").value;
 			var param = { "content": content }
 			var url = '/comments/' + boardId;
