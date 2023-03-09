@@ -85,8 +85,7 @@ public class UserController {
         model.addAttribute("exception", exception);
         return "/user/login";
     }
-
-    /* Security에서 로그아웃은 기본적으로 POST지만, GET으로 우회 */
+    
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
