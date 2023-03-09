@@ -61,7 +61,7 @@
         <textarea class="form-control" id="content" name="content" rows="4"
                   placeholder="댓글을 작성해주세요."></textarea>
       </div>
-      <button type="submit" class="me-2 btn btn-primary" onclick="insertComment()">작성</button>
+      <button type="submit" class="btns btn_bdr1 btn_mid" onclick="insertComment()">작성</button>
     </form>
   </div>
 
@@ -87,7 +87,6 @@
 			var boardId = $('input[name=boardId]').val();
 			var url = '/comments/' + boardId;
 
-			alert(boardId);
 
 			$.ajax({
 				type: 'GET',
@@ -117,30 +116,31 @@
 			})
 		}
 
-        function insertComment() {
-            var boardId = $('input[name=boardId]').val()
-            var content = document.getElementById("content").value
-            var param = {"content": content}
-            var url = '/comments/' + boardId
+		// 댓글 작성
+		function insertComment() {
+			var boardId = $('input[name=boardId]').val();
+			var content = document.getElementById("content").value;
+			var param = { "content": content }
+			var url = '/comments/' + boardId;
 
-            if (isEmpty(content) == true) {
-                alert('댓글을 입력해주세요.')
-                return false;
-            } else {
-                $.ajax({
-                    contentType: 'application/json',
-                    type: 'POST',
-                    url: url,
-                    data: JSON.stringify(param),
-                    success: function (response) {
-                        getComments()
-                    },
-                    error: function (response) {
-                        console.log("insertComment error : " + response)
-                    },
-                })
-            }
-        }
+			if (isEmpty(content) == true) {
+				alert("댓글을 입력해주세요.");
+				return false;
+			} else {
+				$.ajax({
+					contentType: 'application/json',
+					type: 'POST',
+					url: url,
+					data: JSON.stringify(param),
+					success: function (response) {
+						getComments();
+					},
+					error: function (response) {
+						console.log("insertComment error : " + response);
+					},
+				})
+			}
+		}
 
         function updateCommentForm(id) {
             var commentId = id
