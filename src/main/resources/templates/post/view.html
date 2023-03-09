@@ -99,6 +99,9 @@
 						a += '<hr /><div>';
 						a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
 						a += '<span id="writer" style="font-weight: bold; margin-right: 10px">' + value.writer + '</span>';
+						if(value.modifiedDate!=null){
+						  a+='<span style="font-weight: bold; padding: 10px;">' + " (댓글 수정됨) " + '</span>';
+						}
 						if (value.writer == loginUsername) {
 							a += '<ul name="commentChange" class="justify-content-end" style="display: inline;">';
 							a += '<li class="btns btn_bdr5 btn_mid" name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>';
@@ -178,26 +181,26 @@
 			}
 		}
 
-        function deleteComment(id) {
-            var commentId = id
-            var url = '/comments/' + commentId
 
-            if (confirm("정말 삭제하시겠습니까?")) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: url,
-                    success: function (response) {
-                        getComments()
-                    },
-                    error: function (response) {
-                        console.log("deleteComment error : " + response)
-                    },
-                    complete: function () { }
-                })
-            } else {
-                return;
-            }
-        }
+		function deleteComment(id) {
+			var commentId = id;
+			var url = '/comments/' + commentId;
+
+			if (confirm("정말 삭제하시겠습니까?")) {
+				$.ajax({
+					type: 'DELETE',
+					url: url,
+					success: function (response) {
+						getComments();
+					},
+					error: function (response) {
+						console.log("deleteComment error : " + response);
+					}
+				})
+			} else {
+				return;
+			}
+		}
 
 
         function isEmpty(strIn) {

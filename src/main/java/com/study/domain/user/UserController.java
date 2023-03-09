@@ -85,7 +85,7 @@ public class UserController {
         model.addAttribute("exception", exception);
         return "/user/login";
     }
-    
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 

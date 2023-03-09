@@ -54,8 +54,8 @@ public class CommentController {
     }
 
     @DeleteMapping("/{commentId}")
-    public void deleteComments(@PathVariable("comments_id") Long comments_id) throws Exception{
-        commentService.deleteComment(comments_id);
+    public void deleteComments(@PathVariable(value = "commentId") Long commentId) throws Exception{
+        commentService.deleteComment(commentId);
     }
 
 
