@@ -41,6 +41,8 @@
         tb_comment
         WHERE
         id = #{value}
+        and
+        delete_yn = 0
     </select>
 
 
@@ -76,7 +78,7 @@
         delete_yn = 0
         AND post_id = #{value}
         ORDER BY
-        id DESC
+        created_date ASC
     </select>
 
     <select id="count" parameterType="long" resultType="int">

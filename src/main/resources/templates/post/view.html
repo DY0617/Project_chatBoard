@@ -74,7 +74,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <th:block layout:fragment="script">
   <script th:inline="javascript">
-    /*<![CDATA[*/
+
 
 
           $(document).ready(function () {
@@ -98,14 +98,14 @@
 						size = size + 1;
 						a += '<hr /><div>';
 						a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
-						a += '<span id="writer" style="font-weight: bold;">' + value.writer + '</span>';
+						a += '<span id="writer" style="font-weight: bold; margin-right: 10px">' + value.writer + '</span>';
 						if (value.writer == loginUsername) {
 							a += '<ul name="commentChange" class="justify-content-end" style="display: inline;">';
-							a += '<li name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>';
-							a += '<li name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="deleteComment(' + value.id + ')">삭제</li></ul>';
+							a += '<li class="btns btn_bdr5 btn_mid" name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>';
+							a += '<li class="btns btn_bdr5 btn_mid" name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="deleteComment(' + value.id + ')">삭제</li></ul>';
 						}
 						a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">' + value.content + '</pre>';
-						a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + moment(value.createDate).format("YYYY-MM-DD HH:mm") + '</p></div>';
+						a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + value.createdDate.replace('T',' ') + '</p></div>';
 					});
 					$("#count").html(size);
 					$("#comment").html(a);
@@ -216,6 +216,7 @@
 			}
 		}
 
+          /*<![CDATA[*/
 
  // 게시글 삭제
         function deletePost() {
