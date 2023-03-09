@@ -49,62 +49,73 @@
     </section>
   </div> <!--/* .content */-->
   <!-- Comment -->
-  <h4>댓글</h4>
+  <h4>댓글<span>(<span id="count"></span>)</span></h4>
   <div class="mb-5">
     <div id="comment">
     </div>
 
-    <form action="#" th:action="@{/domain/comment/write}" method="post">
-      <input type="hidden" name="boardId" th:value="${id}">
+    <form>
+      <input type="hidden" name="boardId" th:value="${post.id}">
       <div class="mb-3">
         <label for="content" class="form-label"></label>
         <textarea class="form-control" id="content" name="content" rows="4"
                   placeholder="댓글을 작성해주세요."></textarea>
       </div>
-      <button type="submit" class="btn btn_st5 btn_mid">댓글 작성</button>
+      <button type="submit" class="me-2 btn btn-primary" onclick="insertComment()">작성</button>
     </form>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+</th:block>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<th:block layout:fragment="script">
   <script th:inline="javascript">
-        $(document).ready(function () {
+    /*<![CDATA[*/
+
+
+          $(document).ready(function () {
             getComments()
         })
 
-        function getComments() {
-            var loginUsername = [[${ loginUser }]]
-            var boardId = $('input[name=boardId]').val()
-            var url = '/comments/' + boardId
+        		// 댓글 리스트 불러오기
+		function getComments() {
+			var loginUsername = [[${ user.nickname }]];
+			var boardId = $('input[name=boardId]').val();
+			var url = '/comments/' + boardId;
 
-            $.ajax({
-                type: 'GET',
-                url: url,
-                success: function (response) {
-                    var a = ''
-                    var size = 0
-                    $.each(response, function (key, value) {
-                        size = size + 1;
-                        a += '<hr /><div>'
-                        a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">'
-                        a += '<span id="writer" style="font-weight: bold;">' + value.writer + '</span>'
-                        if (value.writer == loginUsername) {
-                            a += '<ul name="commentChange" class="justify-content-end" style="display: inline;">'
-                            a += '<li name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>'
-                            a += '<li name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="deleteComment(' + value.id + ')">삭제</li></ul>'
-                        }
-                        a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">' + value.content + '</pre>'
-                        a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + moment(value.createDate).format("YYYY-MM-DD HH:mm") + '</p></div>'
-                    });
-                    $("#count").html(size)
-                    $("#comment").html(a)
-                },
-                error: function (response) {
-                    console.log("getComments error : " + response)
-                },
-                complete: function () { }
-            })
-        }
+			alert(boardId);
+
+			$.ajax({
+				type: 'GET',
+				url: url,
+				success: function (response) {
+					var a = ''
+					var size = 0
+					$.each(response, function (key, value) {
+						size = size + 1;
+						a += '<hr /><div>';
+						a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
+						a += '<span id="writer" style="font-weight: bold;">' + value.writer + '</span>';
+						if (value.writer == loginUsername) {
+							a += '<ul name="commentChange" class="justify-content-end" style="display: inline;">';
+							a += '<li name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>';
+							a += '<li name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="deleteComment(' + value.id + ')">삭제</li></ul>';
+						}
+						a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">' + value.content + '</pre>';
+						a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + moment(value.createDate).format("YYYY-MM-DD HH:mm") + '</p></div>';
+					});
+					$("#count").html(size);
+					$("#comment").html(a);
+				},
+				error: function (response) {
+					console.log("getComments error : " + response);
+				}
+			})
+		}
 
         function insertComment() {
             var boardId = $('input[name=boardId]').val()
@@ -201,12 +212,7 @@
                 return false;
             }
         }
-    </script>
-</th:block>
 
-<th:block layout:fragment="script">
-  <script th:inline="javascript">
-    /*<![CDATA[*/
 
  // 게시글 삭제
         function deletePost() {

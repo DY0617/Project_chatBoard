@@ -17,50 +17,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/board")
+@RequestMapping("/comments")
 public class CommentController {
 
+    @Autowired
     private CommentService commentService;
-    private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
 
 
-    @RequestMapping(value="/{board_id}/comment.read", method=RequestMethod.GET)
-    public Map<String, Object> readCommentList(@PathVariable("board_id") Long board_id) throws Exception{
-        logger.info("글번호: " + board_id);
-
-        Map<String, Object> map = new HashMap<String, Object>();
-        List<CommentResponse> cvo = commentService.findAllComment(board_id);
-        int comment_count = commentService.count(board_id);
-
-        map.put("comment", cvo);
-        map.put("comment_count", comment_count);
-        return map;
+    @GetMapping("/{boardId}")
+    public List<CommentResponse> getCommentList(@PathVariable(value = "boardId") Long boardId) throws Exception {
+        List<CommentResponse> comments = commentService.findAllComment(boardId);
+        return comments;
     }
 
-    @RequestMapping(value="/comment.insert", method=RequestMethod.POST)
-    public String insertComments(@RequestBody CommentRequest comment) throws Exception {
-        logger.info("글내용: " + comment.getContent());
+    @PostMapping("/{boardId}")
+    public void insertComments(@RequestBody CommentRequest comment) throws Exception {
         comment.setContent(comment.getContent().replace("\r\n", "<br>"));
         commentService.saveComment(comment);
-        return "success";
     }
 
-    @RequestMapping(value="/{board_id}/comment.delete/{comments_id}", method=RequestMethod.DELETE)
-    public String deleteComments(@PathVariable("board_id") int board_id, @PathVariable("comments_id") Long comments_id) throws Exception{
+    @PatchMapping("/{commentId}")
+    public void updateComment(@RequestBody CommentRequest comment) throws Exception {
+        commentService.updateComment(comment);
+    }
+
+    @DeleteMapping("/{commentId}")
+    public void deleteComments(@PathVariable("comments_id") Long comments_id) throws Exception{
         commentService.deleteComment(comments_id);
-        return "success";
     }
 
 
