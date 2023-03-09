@@ -47,7 +47,9 @@ public class CommentController {
     }
 
     @PatchMapping("/{commentId}")
-    public void updateComment(@RequestBody CommentRequest comment) throws Exception {
+    public void updateComment(@PathVariable(value = "commentId") Long commentId,@RequestBody CommentRequest comment,@LoginUser UserDto.Response user) throws Exception {
+        comment.setWriter(user.getNickname());
+        comment.setId(commentId);
         commentService.updateComment(comment);
     }
 
