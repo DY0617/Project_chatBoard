@@ -133,6 +133,7 @@
 					url: url,
 					data: JSON.stringify(param),
 					success: function (response) {
+					    alert("댓글을 작성했습니다.");
 						getComments();
 					},
 					error: function (response) {
@@ -198,20 +199,22 @@
                 return;
             }
         }
+
+
         function isEmpty(strIn) {
-            if (strIn === undefined) {
-                return true;
-            }
-            else if (strIn == null) {
-                return true;
-            }
-            else if (strIn == "") {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+			if (strIn === undefined) {
+				return true;
+			}
+			else if (strIn == null) {
+				return true;
+			}
+			else if (strIn == "") {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 
  // 게시글 삭제

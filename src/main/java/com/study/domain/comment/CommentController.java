@@ -11,6 +11,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.study.common.dto.UserDto;
+import com.study.common.security.auth.LoginUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,11 @@ public class CommentController {
     }
 
     @PostMapping("/{boardId}")
-    public void insertComments(@RequestBody CommentRequest comment) throws Exception {
+    public void insertComments(@PathVariable(value = "boardId") Long boardId,@RequestBody CommentRequest comment,@LoginUser UserDto.Response user) throws Exception {
+        comment.setId(comment.getId());
+        comment.setPostId(boardId);
+        comment.setWriter(user.getNickname());
+        comment.setUserId(user.getId());
         comment.setContent(comment.getContent().replace("\r\n", "<br>"));
         commentService.saveComment(comment);
     }
