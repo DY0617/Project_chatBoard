@@ -128,6 +128,12 @@ db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴�
 댓글 삭제 버튼을 누르면 js alert() 함수로 삭제하시겠습니까? 경고를 출력하고, 확인을 누르면 comment table의 delete_yn 변수를 0에서 1로 바꾼다. db상에서 데이터를 아예 삭제하는 것이 아니고 출력만 되지 않게 만드는 것이다.
 
 
+## 5. DB 설계
+
+![board - tb_comment](https://user-images.githubusercontent.com/79496557/224272577-7fdf36a4-2639-4f70-8494-4757d4046c25.png)
+
+---
+
 ## 참고 블로그
 
 https://congsong.tistory.com/ <<해당 블로그에서 제공한 부트스트랩 사용
