@@ -80,7 +80,7 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 
 ## 참고 블로그
 
-https://congsong.tistory.com/
+https://congsong.tistory.com/ <<해당 블로그에서 제공한 부트탬플릿 사용
 
 https://velog.io/@juwonlee920/Spring-%EC%A1%B0%ED%9A%8C%EC%88%98-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A1%B0%ED%9A%8C%EC%88%98-%EC%A4%91%EB%B3%B5-%EB%B0%A9%EC%A7%80
 
