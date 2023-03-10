@@ -80,7 +80,7 @@ public class PostService {
 
     public PagingResponse<PostResponse> findMyPost(final SearchDto params, UserDto.Response user) {
 
-        int count = postMapper.countMyPost(user);
+        int count = postMapper.countMyPost(user.getId());
         if (count < 1) {
             return new PagingResponse<>(Collections.emptyList(), null);
         }

@@ -55,7 +55,7 @@ public interface PostMapper {
      */
     int count(SearchDto params);
 
-    int countMyPost(UserDto.Response user);
+    int countMyPost(Long id);
 
     int updateView(Long id);
 }

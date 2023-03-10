@@ -122,7 +122,7 @@
         <include refid="search" />
     </select>
 
-    <select id="countMyPost" parameterType="com.study.common.dto.SearchDto" resultType="int">
+    <select id="countMyPost" parameterType="Long" resultType="int">
         SELECT
         COUNT(*)
         FROM
@@ -130,7 +130,7 @@
         WHERE
         delete_yn = 0
         and
-        user_id=#{id}
+        user_id=#{value}
         <include refid="search" />
     </select>
 
