@@ -29,8 +29,20 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 * USER : Spring Security를 이용한 회원가입, 로그인 구현. 회원가입 시 기존 db와 비교해 동일한 아이디가 있으면 경고 메세지를 출력. 정규식을 이용하여 맞지 않는 양식의 밸류값 인풋 시 경고 메시지 출력.
 * COMMENT : Rest API를 이용한 CRUD 구현. 댓글 수정 시 Modified_date를 사용해 수정된 댓글임을 보여줄 수 있도록 함.
 
+## 3. 이용한 스택
 
+- java 11
+- Spring Boot 2.7.1
+- Thymeleaf
+- Spring Security
+- MyBatis
+- MariaDB(Dbeaver)
+- Gradle
+- Html
+- css
+- JavaScript
 
+## 4. 실행 화면
 
 
 
