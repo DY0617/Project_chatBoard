@@ -1,6 +1,6 @@
 # Project_chatBoard
 
-2023-02-28 ~~ 2023-03-10
+제작 기간 : 2023-02-28 ~~ 2023-03-10
 
 ![chat_board_main](https://user-images.githubusercontent.com/79496557/224250034-b5cb3652-33d9-438a-a5cb-85c9f2ad2278.PNG)
 
@@ -20,9 +20,14 @@
 
 ## 1. 프로젝트 소개
 
-chatBoard_Project는 Spring boot를 이용하여 만든 게시판 프로젝트입니다.
+Project_chatBoard는 Spring boot를 이용하여 만든 게시판 프로젝트입니다. 2023-02-28부터 2023-03-10까지 프로젝트를 진행하였습니다.
 
 ## 2. 프로젝트 기능
+
+ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 게시판을 나타내는 POST, 유저를 나타내는 USER, 댓글을 나타내는 COMMENT가 프로젝트의 가장 주된 기능입니다.
+* POST : 기본적인 CRUD 기능 구현, HttpServlet 쿠키를 이용한 조회수 구현, 페이징 처리, 특정 단어로 게시글 전체 검색, 내용 검색, 제목 검색, 작성자 검색 기능 구현.
+* USER : Spring Security를 이용한 회원가입, 로그인 구현. 회원가입 시 기존 db와 비교해 동일한 아이디가 있으면 경고 메세지를 출력. 정규식을 이용하여 맞지 않는 양식의 밸류값 인풋 시 경고 메시지 출력.
+* COMMENT : Rest API를 이용한 CRUD 구현. 댓글 수정 시 Modified_date를 사용해 수정된 댓글임을 보여줄 수 있도록 함.
 
 
 
