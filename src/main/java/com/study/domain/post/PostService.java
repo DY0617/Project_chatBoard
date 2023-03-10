@@ -1,6 +1,7 @@
 package com.study.domain.post;
 
 import com.study.common.dto.SearchDto;
+import com.study.common.dto.UserDto;
 import com.study.paging.Pagination;
 import com.study.paging.PagingResponse;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -73,6 +75,24 @@ public class PostService {
         params.setPagination(pagination);
 
         List<PostResponse> list = postMapper.findAll(params);
+        return new PagingResponse<>(list, pagination);
+    }
+
+    public PagingResponse<PostResponse> findMyPost(final SearchDto params, UserDto.Response user) {
+
+        int count = postMapper.countMyPost(user);
+        if (count < 1) {
+            return new PagingResponse<>(Collections.emptyList(), null);
+        }
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("params",params);
+        map.put("user",user);
+
+
+        Pagination pagination = new Pagination(count, params);
+        params.setPagination(pagination);
+
+        List<PostResponse> list = postMapper.findMyPost(map);
         return new PagingResponse<>(list, pagination);
     }
 

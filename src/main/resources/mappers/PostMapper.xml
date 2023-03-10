@@ -95,6 +95,21 @@
         LIMIT #{pagination.limitStart}, #{recordSize}
     </select>
 
+    <select id="findMyPost" parameterType="com.study.common.dto.SearchDto" resultType="com.study.domain.post.PostResponse">
+        SELECT
+        <include refid="postColumns" />
+        FROM
+        tb_post
+        WHERE
+        delete_yn = 0
+        and
+        user_id=#{user.id}
+        <include refid="search" />
+        ORDER BY
+        id DESC
+        LIMIT #{params.pagination.limitStart}, #{params.recordSize}
+    </select>
+
 
     <!-- 게시글 수 카운팅 -->
     <select id="count" parameterType="com.study.common.dto.SearchDto" resultType="int">
@@ -104,6 +119,18 @@
             tb_post
         WHERE
             delete_yn = 0
+        <include refid="search" />
+    </select>
+
+    <select id="countMyPost" parameterType="com.study.common.dto.SearchDto" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        tb_post
+        WHERE
+        delete_yn = 0
+        and
+        user_id=#{id}
         <include refid="search" />
     </select>
 

@@ -1,10 +1,12 @@
 package com.study.domain.post;
 
 import com.study.common.dto.SearchDto;
+import com.study.common.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
@@ -22,6 +24,8 @@ public interface PostMapper {
      * @return 게시글 상세정보
      */
     PostResponse findById(Long id);
+
+
 
     /**
      * 게시글 수정
@@ -42,12 +46,16 @@ public interface PostMapper {
      */
     List<PostResponse> findAll(SearchDto params);
 
+    List<PostResponse> findMyPost(HashMap<String, Object> map);
+
     /**
      * 게시글 수 카운팅
      * @param params - search conditions
      * @return 게시글 수
      */
     int count(SearchDto params);
+
+    int countMyPost(UserDto.Response user);
 
     int updateView(Long id);
 }

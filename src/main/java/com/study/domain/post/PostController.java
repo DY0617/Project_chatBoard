@@ -63,6 +63,16 @@ public class PostController {
         return "post/list";
     }
 
+    @GetMapping("/post/listMy.do")
+    public String openMyPostList(@ModelAttribute("params") final SearchDto params, Model model,@LoginUser UserDto.Response user) {
+        PagingResponse<PostResponse> response = postService.findMyPost(params,user);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("response", response);
+        return "post/list";
+    }
+
     // 게시글 상세 페이지
     @GetMapping("/post/view.do")
     public String openPostView(@RequestParam final Long id, Model model, @LoginUser UserDto.Response user, HttpServletRequest request, HttpServletResponse response) {
