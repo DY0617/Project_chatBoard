@@ -78,8 +78,8 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 
 ### 2. USER
 1. 로그인 화면
-![로그인](https://user-images.githubusercontent.com/79496557/224265196-29a74d79-dce0-43b9-b758-473fead54560.PNG)
 
+![로그인](https://user-images.githubusercontent.com/79496557/224265196-29a74d79-dce0-43b9-b758-473fead54560.PNG)
 비로그인 상태에서 죄측 상단에 로그인과 회원가입 버튼이 있는데, 로그인 버튼을 클릭하면 해당 페이지가 호출된다. 올바른 username과 password를 입력하면 db와 대조하여 로그인이 완료되고, 특정 문제로 로그인이 실패하면 오류 메시지가 출력된다.
 ![로그인 실패](https://user-images.githubusercontent.com/79496557/224265586-7ab9f1a6-f1c7-4766-9d8e-fd984f23bbe7.PNG)
 <로그인 실패시 화면
