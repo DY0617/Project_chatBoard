@@ -20,6 +20,10 @@
 
 ## 1. 프로젝트 소개
 
+chatBoard_Project는 Spring boot를 이용하여 만든 게시판 프로젝트입니다.
+
+## 2. 프로젝트 기능
+
 
 
 
