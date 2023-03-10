@@ -152,4 +152,4 @@ https://velog.io/@juwonlee920/Spring-%EC%A1%B0%ED%9A%8C%EC%88%98-%EA%B8%B0%EB%8A
 
 https://dev-coco.tistory.com/
 
-https://github.com/wmdwjddyd6/Board/blob/main/board/src/main/resources/templates/board/post.html
+https://black-mint.tistory.com/
