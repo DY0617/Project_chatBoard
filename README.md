@@ -45,7 +45,7 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 - Html
 - css
 - JavaScript
-- HicariCP
+- HikariCP
 
 ---
 ## 4. 실행 화면
