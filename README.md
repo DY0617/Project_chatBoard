@@ -94,6 +94,7 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 ![회원가입 오류1](https://user-images.githubusercontent.com/79496557/224267393-7bdc3e32-2f4c-4b67-8d18-ea9fcb00714c.PNG)
 
 db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴다면 해당 상황에 맞는 경고 문구가 출력된다.
+
 ![회원가입 오류 2](https://user-images.githubusercontent.com/79496557/224267703-0a9b053d-5ad5-4e2c-9833-6380609f1192.PNG)
 
 
