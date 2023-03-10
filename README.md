@@ -80,13 +80,18 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 1. 로그인 화면
 
 ![로그인](https://user-images.githubusercontent.com/79496557/224265196-29a74d79-dce0-43b9-b758-473fead54560.PNG)
+
 비로그인 상태에서 죄측 상단에 로그인과 회원가입 버튼이 있는데, 로그인 버튼을 클릭하면 해당 페이지가 호출된다. 올바른 username과 password를 입력하면 db와 대조하여 로그인이 완료되고, 특정 문제로 로그인이 실패하면 오류 메시지가 출력된다.
 ![로그인 실패](https://user-images.githubusercontent.com/79496557/224265586-7ab9f1a6-f1c7-4766-9d8e-fd984f23bbe7.PNG)
 <로그인 실패시 화면
 
 
 2. 회원가입 화면
-
+![회원가입](https://user-images.githubusercontent.com/79496557/224266656-3624a52a-8874-47dc-8cc0-0471bf33965b.PNG)
+로그인 버튼 우측 회원가입 버튼을 클릭하면 해당 페이지가 호출된다. 아이디, 비밀번호, 닉네임, 이메일을 필수적으로 입력해야 하고, 각각의 정규형에 맞지 않는 인풋값이 들어오면 해당 인풋값 밑에 경고 문구가 출력된다. 입력 정보를 저장한 채로 리다이렉트 하여 입력해 놓았던 값이 그대로 유지된다.
+![회원가입 오류1](https://user-images.githubusercontent.com/79496557/224267393-7bdc3e32-2f4c-4b67-8d18-ea9fcb00714c.PNG)
+db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴다면 해당 상황에 맞는 경고 문구가 출력된다.
+![회원가입 오류 2](https://user-images.githubusercontent.com/79496557/224267703-0a9b053d-5ad5-4e2c-9833-6380609f1192.PNG)
 
 
 
