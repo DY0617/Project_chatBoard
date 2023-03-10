@@ -49,6 +49,13 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있습니다. 
 ---
 ## 4. 실행 화면
 
+### 1. POST
+1. 전체 게시글 보기
+![chat_board_main](https://user-images.githubusercontent.com/79496557/224257083-a74ed0b8-713b-433f-bb35-049036556548.PNG)
+
+2. 본인이 쓴 게시글만 보기
+![내가 쓴 글](https://user-images.githubusercontent.com/79496557/224258276-0055f3a8-0973-4bcd-bd09-7075862a220e.PNG)
+좌측 바에서 '내가 작성한 글'을 클릭하면 USER의 id(PK)와 POST의 user_id(FK) 를 대조하여 내가 작성한 글들을 가져온다.
 
 
 ## 참고 블로그
