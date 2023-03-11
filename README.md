@@ -45,7 +45,6 @@ ChatBoard 프로젝트는 크게 세가지 기능으로 나뉘어 있. 게시판
 - Html
 - css
 - JavaScript
-- HikariCP
 
 ---
 ## 4. 실행 화면
@@ -141,6 +140,7 @@ db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴�
 - Logback을 사용하여 쿼리 로그를 출력함.(Log4JDBC)
 - LoggerIntercepter를 만들고 Lombok 어노테이션 Slf4j를 사용하여 로깅 추상화를 사용함.
 - Log에 AOP를 활용함.(AOP는 여러 개의 핵심 비즈니스 로직 외에 공통으로 처리되어야 하는 로그 출력, 보안 처리, 예외 처리와 같은 코드를 별도로 분리해서 하나의 단위로 묶는 모듈화의 개념으로 생각할 수 있다.)
+- hikariCP 이용
 
 ---
 
