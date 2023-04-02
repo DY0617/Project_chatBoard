@@ -14,7 +14,7 @@
         , modified_date
     </sql>
 
-    <insert id="save" parameterType="com.study.domain.user.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.budgetchecker.domain.user.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_user (
         <include refid="userColumns" />
         ) VALUES (
@@ -28,7 +28,7 @@
         )
     </insert>
 
-    <update id="userUpdate" parameterType="com.study.domain.user.User">
+    <update id="userUpdate" parameterType="com.budgetchecker.domain.user.User">
         UPDATE tb_user
         SET
         modified_date = NOW()
@@ -38,7 +38,7 @@
         id = #{id}
     </update>
 
-    <select id="findById" resultType="com.study.domain.user.User">
+    <select id="findById" resultType="com.budgetchecker.domain.user.User">
         SELECT
         <include refid="userColumns" />
         FROM
@@ -47,7 +47,7 @@
         id = #{id}
     </select>
 
-    <select id="findByUsername" resultType="com.study.domain.user.User">
+    <select id="findByUsername" resultType="com.budgetchecker.domain.user.User">
         SELECT
         <include refid="userColumns" />
         FROM
@@ -56,7 +56,7 @@
         username = #{username}
     </select>
 
-    <select id="existsByEmail" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByEmail" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
@@ -65,7 +65,7 @@
         email = #{value}
     </select>
 
-    <select id="existsByNickname" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByNickname" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
@@ -74,7 +74,7 @@
         nickname = #{value}
     </select>
 
-    <select id="existsByUsername" parameterType="com.study.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByUsername" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
