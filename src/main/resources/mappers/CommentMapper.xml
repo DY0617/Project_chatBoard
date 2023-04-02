@@ -17,7 +17,7 @@
 
 
     <!-- 댓글 저장 -->
-    <insert id="save" parameterType="com.study.domain.comment.CommentRequest" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.budgetchecker.domain.comment.CommentRequest" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_comment (
         <include refid="commentColumns" />
         ) VALUES (
@@ -34,7 +34,7 @@
 
 
     <!-- 댓글 상세정보 조회 -->
-    <select id="findById" parameterType="long" resultType="com.study.domain.comment.CommentResponse">
+    <select id="findById" parameterType="long" resultType="com.budgetchecker.domain.comment.CommentResponse">
         SELECT
         <include refid="commentColumns" />
         FROM
@@ -47,7 +47,7 @@
 
 
     <!-- 댓글 수정 -->
-    <update id="update" parameterType="com.study.domain.comment.CommentRequest">
+    <update id="update" parameterType="com.budgetchecker.domain.comment.CommentRequest">
         UPDATE tb_comment
         SET
         modified_date = NOW()
@@ -69,7 +69,7 @@
 
 
     <!-- 댓글 리스트 조회 -->
-    <select id="findAll" parameterType="long" resultType="com.study.domain.comment.CommentResponse">
+    <select id="findAll" parameterType="long" resultType="com.budgetchecker.domain.comment.CommentResponse">
         SELECT
         <include refid="commentColumns" />
         FROM
