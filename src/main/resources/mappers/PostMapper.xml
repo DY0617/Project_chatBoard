@@ -19,7 +19,7 @@
 
 
     <!-- 게시글 저장 -->
-    <insert id="save" parameterType="com.budgetchecker.domain.post.PostRequest" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.study.domain.post.PostRequest" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_post (
             <include refid="postColumns" />
         ) VALUES (
@@ -38,7 +38,7 @@
 
 
     <!-- 게시글 상세정보 조회 -->
-    <select id="findById" parameterType="long" resultType="com.budgetchecker.domain.post.PostResponse">
+    <select id="findById" parameterType="long" resultType="com.study.domain.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM
@@ -50,7 +50,7 @@
 
 
     <!-- 게시글 수정 -->
-    <update id="update" parameterType="com.budgetchecker.domain.post.PostRequest">
+    <update id="update" parameterType="com.study.domain.post.PostRequest">
         UPDATE tb_post
         SET
               modified_date = NOW()
@@ -82,7 +82,7 @@
 
 
     <!-- 게시글 리스트 조회 -->
-    <select id="findAll" parameterType="com.budgetchecker.common.dto.SearchDto" resultType="com.budgetchecker.domain.post.PostResponse">
+    <select id="findAll" parameterType="com.study.common.dto.SearchDto" resultType="com.study.domain.post.PostResponse">
         SELECT
             <include refid="postColumns" />
         FROM
@@ -95,7 +95,7 @@
         LIMIT #{pagination.limitStart}, #{recordSize}
     </select>
 
-    <select id="findMyPost" parameterType="com.budgetchecker.common.dto.SearchDto" resultType="com.budgetchecker.domain.post.PostResponse">
+    <select id="findMyPost" parameterType="com.study.common.dto.SearchDto" resultType="com.study.domain.post.PostResponse">
         SELECT
         <include refid="postColumns" />
         FROM
@@ -112,7 +112,7 @@
 
 
     <!-- 게시글 수 카운팅 -->
-    <select id="count" parameterType="com.budgetchecker.common.dto.SearchDto" resultType="int">
+    <select id="count" parameterType="com.study.common.dto.SearchDto" resultType="int">
         SELECT
             COUNT(*)
         FROM
