@@ -28,10 +28,6 @@ public class User {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
-
     private LocalDateTime createdDate;     // 생성일시
     private LocalDateTime modifiedDate;    // 최종 수정일시
 
@@ -48,9 +44,7 @@ public class User {
         return this;
     }
 
-    public String getRoleValue() {
-        return this.role.getValue();
-    }
+
 
 
 }
