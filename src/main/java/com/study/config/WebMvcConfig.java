@@ -1,7 +1,6 @@
 package com.study.config;
 
 import com.study.common.security.auth.LoginUserArgumentResolver;
-import com.study.interceptor.LoggerInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -16,11 +15,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoggerInterceptor())
-                .excludePathPatterns("/css/**", "/images/**", "/js/**");
-    }
 
     private final LoginUserArgumentResolver loginUserArgumentResolver;
 
