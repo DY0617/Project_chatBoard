@@ -1,11 +1,7 @@
 package com.study.common.dto;
 
-<<<<<<< HEAD:src/main/java/com/budgetchecker/common/dto/UserDto.java
-import com.budgetchecker.domain.user.User;
-=======
-import com.study.domain.user.Role;
+
 import com.study.domain.user.User;
->>>>>>> f518396da7f28a9a93f983e35ee87869bc3d6284:src/main/java/com/study/common/dto/UserDto.java
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
