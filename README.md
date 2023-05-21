@@ -1,6 +1,8 @@
 # Project_chatBoard
 
-제작 기간 : 2023-02-28 ~~ 2023-03-10
+1차 제작 기간 : 2023-02-28 ~~ 2023-03-10
+
+시간 날 때마다 개선중
 
 ![chat_board_main](https://user-images.githubusercontent.com/79496557/224250034-b5cb3652-33d9-438a-a5cb-85c9f2ad2278.PNG)
 
