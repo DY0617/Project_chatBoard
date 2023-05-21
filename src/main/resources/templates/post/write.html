@@ -12,7 +12,6 @@
   <div class="content">
     <section>
       <form id="saveForm" method="post" autocomplete="off">
-        <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
         <!--/* 게시글 수정인 경우, 서버로 전달할 게시글 번호 (PK) */-->
         <input type="hidden" id="id" name="id" th:if="${post != null}" th:value="${post.id}"/>
 
