@@ -5,6 +5,14 @@
 ![chat_board_main](https://user-images.githubusercontent.com/79496557/224250034-b5cb3652-33d9-438a-a5cb-85c9f2ad2278.PNG)
 
 
+# 배포
+
+https://port-0-project-chatboard-7e6o2clhx2weth.sel4.cloudtype.app/auth/login
+
+테스트중
+
+---
+
 ## 목차
 - [프로젝트 소개](#1-프로젝트-소개)
 - [프로젝트 기능](#2-프로젝트-기능)
