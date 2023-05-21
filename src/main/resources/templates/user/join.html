@@ -12,7 +12,7 @@
 <div id="posts_list">
         <div class="container col-md-8">
         
-            <form id="joinForm" action="/auth/joinProc" method="post">
+            <form id="joinForm" th:action="@{/auth/joinProc}" method="post">
                 <div class="form-group">
                     <label for="username">아이디<br></label>
                     <input type="text" name="username" id="username" class="form-control" placeholder="아이디를 입력해주세요" style="width:400px;height:40px;">
