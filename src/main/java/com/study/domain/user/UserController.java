@@ -51,7 +51,7 @@ public class UserController {
 
     @GetMapping("/auth/join")
     public String join() {
-        return "/user/join";
+        return "user/join";
     }
 
     /* 회원가입 */
@@ -70,7 +70,7 @@ public class UserController {
                 model.addAttribute(key, validatorResult.get(key));
             }
             /* 회원가입 페이지로 다시 리턴 */
-            return "/user/join";
+            return "user/join";
         }
         userService.userJoin(dto);
         return "redirect:/auth/login";
@@ -84,7 +84,7 @@ public class UserController {
 
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
-        return "/user/login";
+        return "user/login";
     }
 
     @GetMapping("/logout")
@@ -103,7 +103,7 @@ public class UserController {
         if (user != null) {
             model.addAttribute("user", user);
         }
-        return "/user/modify";
+        return "user/modify";
     }
 
     @RequestMapping("/modify/update.do")
