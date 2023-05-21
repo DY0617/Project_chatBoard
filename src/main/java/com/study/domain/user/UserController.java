@@ -78,12 +78,10 @@ public class UserController {
 
 
     @GetMapping("/auth/login")
-    public String login(@RequestParam(value = "error", required = false)String error,
-                        @RequestParam(value = "exception", required = false)String exception,
+    public String login(
                         Model model) {
 
-        model.addAttribute("error", error);
-        model.addAttribute("exception", exception);
+        
         return "/user/login";
     }
 
