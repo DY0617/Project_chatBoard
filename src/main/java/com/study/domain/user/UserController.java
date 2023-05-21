@@ -58,7 +58,7 @@ public class UserController {
 
     @PostMapping("/auth/joinProc")
     public String joinProc(@Valid UserDto.Request dto, Errors errors, Model model) {
-        
+
 
         if (errors.hasErrors()) {
             /* 회원가입 실패시 입력 데이터 값을 유지 */
