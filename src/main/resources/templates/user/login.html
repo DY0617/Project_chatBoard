@@ -1,11 +1,43 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
-<body>
-나다
-</body>
+
+<th:block layout:fragment="title">
+    <title>로그인</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>로그인</h3>
+    </div>
+
+
+    <div id="posts_list">
+        <div class="container col-md-6">
+
+
+            <form th:action="@{/auth/loginProc}" method="post">
+                <div class="form-group">
+                    <label th:for="username">아이디<br></label>
+                    <input type="text" class="form-control" name="username" placeholder="아이디를 입력해주세요" style="width:400px;height:40px;">
+                </div>
+
+                <div class="form-group">
+                    <label th:for="password">비밀번호<br></label>
+                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요" style="width:400px;height:40px;">
+                </div>
+
+                <span th:if="${error!=null}">
+                    <p style="color:red;" th:text="${exception}"></p>
+                </span>
+
+                <button type="submit" class="btns btn_bdr2 btn_mid"> 로그인</button>
+            </form>
+        </div>
+    </div>
+
+</th:block>
 </html>
