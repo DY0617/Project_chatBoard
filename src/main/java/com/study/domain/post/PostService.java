@@ -101,4 +101,16 @@ public class PostService {
         return postMapper.updateView(id);
     }
 
+    public PagingResponse<PostResponse> findCate1Post(SearchDto params) {
+        int count = postMapper.count(params);
+        if (count < 1) {
+            return new PagingResponse<>(Collections.emptyList(), null);
+        }
+
+        Pagination pagination = new Pagination(count, params);
+        params.setPagination(pagination);
+
+        List<PostResponse> list = postMapper.findCate1(params);
+        return new PagingResponse<>(list, pagination);
+    }
 }

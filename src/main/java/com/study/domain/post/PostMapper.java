@@ -55,4 +55,6 @@ public interface PostMapper {
     int countMyPost(Long id);
 
     int updateView(Long id);
+
+    List<PostResponse> findCate1(SearchDto params);
 }
