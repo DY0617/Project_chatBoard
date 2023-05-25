@@ -15,6 +15,7 @@
         , created_date
         , modified_date
         , user_id
+        , cate_id
     </sql>
 
 
@@ -33,6 +34,7 @@
             , NOW()
             , NULL
             , #{userId}
+            , #{cateId}
         )
     </insert>
 
