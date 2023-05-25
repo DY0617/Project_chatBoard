@@ -13,5 +13,6 @@ public class PostRequest {
     private String writer;       // 작성자
     private Boolean noticeYn;    // 공지글 여부
     private Long userId;
+    private Long cateId;
 
 }
