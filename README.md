@@ -1,6 +1,8 @@
 # Project_chatBoard
 
-제작 기간 : 2023-02-28 ~~ 2023-03-10
+1차 제작 기간 : 2023-02-28 ~~ 2023-03-10
+
+시간 날 때마다 개선중
 
 ![chat_board_main](https://user-images.githubusercontent.com/79496557/224250034-b5cb3652-33d9-438a-a5cb-85c9f2ad2278.PNG)
 
@@ -9,7 +11,6 @@
 
 https://port-0-project-chatboard-7e6o2clhx2weth.sel4.cloudtype.app/post/list.do
 
-테스트중
 
 ---
 
@@ -148,6 +149,10 @@ db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴�
 - Logback을 사용하여 쿼리 로그를 출력함.(Log4JDBC)
 - Lombok 어노테이션 Slf4j를 사용하여 로깅 추상화를 사용함.
 - Log에 AOP를 활용함.(AOP는 여러 개의 핵심 비즈니스 로직 외에 공통으로 처리되어야 하는 로그 출력, 보안 처리, 예외 처리와 같은 코드를 별도로 분리해서 하나의 단위로 묶는 모듈화의 개념으로 생각할 수 있다.)
+
+---
+
+2023-05-21 : 배포 시작
 
 ---
 
