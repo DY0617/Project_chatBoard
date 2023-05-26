@@ -153,8 +153,8 @@ function drawList(list, num) {
       // 첫 페이지, 이전 페이지
       if (pagination.existPrevPage) {
         html += `
-            <a href="javascript:void(0);" onclick="movePage(1)" class="page_bt first">첫 페이지</a>
-            <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page_bt prev">이전 페이지</a>
+            <a href="javascript:void(0);" onclick="movePage(1)" ><<</a>
+            <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})"><</a>
         `;
       }
 
@@ -170,8 +170,8 @@ function drawList(list, num) {
       // 다음 페이지, 마지막 페이지
       if (pagination.existNextPage) {
         html += `
-            <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page_bt next">다음 페이지</a>
-            <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page_bt last">마지막 페이지</a>
+            <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});">></a>
+            <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});">>></a>
         `;
       }
 
