@@ -35,8 +35,8 @@
         </colgroup>
         <thead>
         <tr>
-          <th scope="col">카테고리</th>
           <th scope="col">번호</th>
+          <th scope="col">카테고리</th>
           <th scope="col">제목</th>
           <th scope="col">작성자</th>
           <th scope="col">등록일</th>
@@ -120,8 +120,8 @@ function drawList(list, num) {
     list.forEach(row => {
         html += `
             <tr>
-                <td>${row.cateId}</td>
                 <td>${row.noticeYn === false ? num-- : '공지'}</td>
+                <td>${row.cateTitle}</td>
                 <td class="tl"><a href="javascript:void(0);" onclick="goViewPage(${row.id});">${row.title}</a></td>
                 <td>${row.writer}</td>
                 <td>${dayjs(row.createdDate).format('YYYY-MM-DD HH:mm')}</td>

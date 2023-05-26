@@ -20,5 +20,6 @@ public class PostResponse {
     private LocalDateTime modifiedDate;    // 최종 수정일시
     private Long userId;
     private Long cateId;
+    private String cateTitle;
 
 }
