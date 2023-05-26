@@ -27,7 +27,7 @@
             <th scope="row">게시판 카테고리</th>
             <td colspan="3">
 
-              <select id="cateType" name="cateType" title="카테고리 입력" required style="width:520px;">
+              <select id="cateType" name="cateId" title="카테고리" required style="width:520px;">
                 <option value="1">자유게시판</option>
                 <option value="2">가입인사</option>
               </select>
@@ -100,7 +100,7 @@
             }
 
             const form = document.getElementById('saveForm');
-            const fields = ['id', 'title', 'content', 'noticeYn','writer','userId'];
+            const fields = ['id', 'title', 'content', 'noticeYn','writer','userId','cateId'];
             form.isNotice.checked = post.noticeYn;
 
             form.createdDate.value = dayjs(post.createdDate).format('YYYY-MM-DD HH:mm');
@@ -115,8 +115,8 @@
         // 게시글 저장(수정)
         function savePost() {
             const form = document.getElementById('saveForm');
-            const fields = [form.title, form.writer, form.content];
-            const fieldNames = ['제목', '닉네임', '내용'];
+            const fields = [form.cateType, form.title, form.writer, form.content];
+            const fieldNames = ['카테고리','제목', '닉네임', '내용'];
 
             for (let i = 0, len = fields.length; i < len; i++) {
                 isValid(fields[i], fieldNames[i]);
