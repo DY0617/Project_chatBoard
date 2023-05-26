@@ -14,5 +14,5 @@ public class PostRequest {
     private Boolean noticeYn;    // 공지글 여부
     private Long userId;
     private Long cateId;
-
+    private String cateTitle;
 }

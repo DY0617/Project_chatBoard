@@ -66,6 +66,17 @@ public class PostController {
         return "post/list";
     }
 
+    // 게시글 리스트 페이지
+    @GetMapping("/post/list2.do")
+    public String openPostCate2List(@ModelAttribute("params") final SearchDto params, Model model,@LoginUser UserDto.Response user) {
+        PagingResponse<PostResponse> response = postService.findCate2Post(params);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+        model.addAttribute("response", response);
+        return "post/list";
+    }
+
     @GetMapping("/post/listMy.do")
     public String openMyPostList(@ModelAttribute("params") final SearchDto params, Model model,@LoginUser UserDto.Response user) {
         PagingResponse<PostResponse> response = postService.findMyPost(params,user);

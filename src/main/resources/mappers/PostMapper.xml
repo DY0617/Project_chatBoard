@@ -172,6 +172,31 @@
         LIMIT #{pagination.limitStart}, #{recordSize}
     </select>
 
+    <select id="findCate2" parameterType="com.study.common.dto.SearchDto" resultType="com.study.domain.post.PostResponse">
+        SELECT
+        <include refid="postColumns" />
+        , (
+        SELECT
+        cate_title
+        FROM
+        tb_post e join tb_post_category g
+        on e.cate_id=g.id
+        WHERE
+        e.id = f.id
+        )
+        as cate_title
+        FROM
+        tb_post f
+        WHERE
+        delete_yn = 0
+        and
+        cate_id=2
+        <include refid="search" />
+        ORDER BY
+        id DESC
+        LIMIT #{pagination.limitStart}, #{recordSize}
+    </select>
+
 
     <!-- 게시글 수 카운팅 -->
     <select id="count" parameterType="com.study.common.dto.SearchDto" resultType="int">
