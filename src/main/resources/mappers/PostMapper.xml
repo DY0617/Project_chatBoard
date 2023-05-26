@@ -221,6 +221,30 @@
         <include refid="search" />
     </select>
 
+    <select id="count1" parameterType="com.study.common.dto.SearchDto" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        tb_post
+        WHERE
+        delete_yn = 0
+        and
+        cate_id=1
+        <include refid="search" />
+    </select>
+
+    <select id="count2" parameterType="com.study.common.dto.SearchDto" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        tb_post
+        WHERE
+        delete_yn = 0
+        and
+        cate_id=2
+        <include refid="search" />
+    </select>
+
     <!-- 게시글 검색 -->
     <sql id="search">
         <!-- 검색 키워드가 있을 때 -->

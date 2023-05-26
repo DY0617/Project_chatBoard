@@ -102,7 +102,7 @@ public class PostService {
     }
 
     public PagingResponse<PostResponse> findCate1Post(SearchDto params) {
-        int count = postMapper.count(params);
+        int count = postMapper.count1(params);
         if (count < 1) {
             return new PagingResponse<>(Collections.emptyList(), null);
         }
@@ -115,7 +115,7 @@ public class PostService {
     }
 
     public PagingResponse<PostResponse> findCate2Post(SearchDto params) {
-        int count = postMapper.count(params);
+        int count = postMapper.count2(params);
         if (count < 1) {
             return new PagingResponse<>(Collections.emptyList(), null);
         }

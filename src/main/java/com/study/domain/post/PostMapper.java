@@ -52,6 +52,10 @@ public interface PostMapper {
      */
     int count(SearchDto params);
 
+    int count1(SearchDto params);
+
+    int count2(SearchDto params);
+
     int countMyPost(Long id);
 
     int updateView(Long id);
