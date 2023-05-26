@@ -43,8 +43,18 @@
     <select id="findById" parameterType="long" resultType="com.study.domain.post.PostResponse">
         SELECT
             <include refid="postColumns" />
+        , (
+        SELECT
+        cate_title
         FROM
-            tb_post
+        tb_post e join tb_post_category g
+        on e.cate_id=g.id
+        WHERE
+        e.id = f.id
+        )
+        as cate_title
+        FROM
+            tb_post f
         WHERE
             id = #{value}
 

@@ -20,6 +20,9 @@
           <th scope="row">글 유형</th>
           <td th:text="${post.noticeYn == false ? '일반' : '공지'}"></td>
 
+          <th scope="row">카테고리</th>
+          <td th:text="${post.cateTitle}"></td>
+
           <th scope="row">등록일</th>
           <td th:text="${#temporals.format( post.createdDate, 'yyyy-MM-dd HH:mm' )}"></td>
         </tr>
