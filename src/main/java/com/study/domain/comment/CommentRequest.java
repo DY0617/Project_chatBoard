@@ -15,5 +15,5 @@ public class CommentRequest {
     private String content;    // 내용
     private String writer;     // 작성자
     private Long userId;
-
+    private Integer parent;    //대댓글
 }
