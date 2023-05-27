@@ -91,8 +91,6 @@
         <include refid="commentColumns" />
         FROM
         CTE
-        where
-        delete_yn = 0
         ORDER BY CONVERT(SUBSTRING_INDEX(path, '-', 1), UNSIGNED) ASC, id ASC, CONVERT(SUBSTRING_INDEX(path, '-', 2), UNSIGNED) ASC, id ASC
 
     </select>

@@ -110,22 +110,29 @@
 						  a += '<hr /><div style="float:left;">ㄴ</div><div style="margin-left:20px;">';
 						}
 
-						a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
-						a += '<span id="writer" style="font-weight: bold; margin-right: 10px">' + value.writer + '</span>';
-						if(value.modifiedDate!=null){
-						  a+='<span style="font-weight: bold; padding: 10px;">' + " (댓글 수정됨) " + '</span>';
-						}
-						if (value.writer == loginUsername) {
+                        if(value.deleteYn==0){
+                          a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
+						  a += '<span id="writer" style="font-weight: bold; margin-right: 10px">' + value.writer + '</span>';
+						  if(value.modifiedDate!=null){
+						    a+='<span style="font-weight: bold; padding: 10px;">' + " (댓글 수정됨) " + '</span>';
+						  }
+						  if (value.writer == loginUsername) {
 							a += '<ul name="commentChange" class="justify-content-end" style="display: inline;">';
 							a += '<li class="btns btn_bdr5 btn_mid" name="commentUpdate" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="updateCommentForm(' + value.id + ')">수정</li>';
 							a += '<li class="btns btn_bdr5 btn_mid" name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small; margin-right: 5px" onclick="deleteComment(' + value.id + ')">삭제</li></ul>';
-						}
-						if(value.parent == null){
+						  }
+						  if(value.parent == null){
 						    a += '<li class="btns btn_bdr5 btn_mid" name="commentDelete" type="button" style="display: inline; opacity: 0.7; font-size: small;" onclick="insertCommentComment(' +value.id + ')">대댓글</li></ul>';
-						}
+						  }
 
-						a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">' + value.content + '</pre>';
-						a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + value.createdDate.replace('T',' ') + '</p></div>';
+						  a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px;margin-top: -10px; font-size: large;">' + value.content + '</pre>';
+						  a += '<p name="createDate' + value.id + '" style="margin-bottom: 5px; opacity: 0.5; font-size: small;">' + value.createdDate.replace('T',' ') + '</p></div>';
+                        }
+
+                        else{
+                          a += '<pre id="' + value.id + '" name="comment' + value.id + '" style="margin-bottom: 5px; font-size: large;">---해당 댓글은 삭제되었습니다---</pre></div>';
+                        }
+
 					});
 					$("#count").html(size);
 					$("#comment").html(a);
