@@ -81,7 +81,7 @@
         delete_yn = 0
         AND post_id = #{value}
         ORDER BY
-        created_date ASC
+        parent asc
     </select>
 
     <select id="count" parameterType="long" resultType="int">
