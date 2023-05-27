@@ -13,6 +13,7 @@
         , created_date
         , modified_date
         , user_id
+        , parent
 
     </sql>
 
@@ -30,6 +31,7 @@
         , NOW()
         , NULL
         , #{userId}
+        , #{parent}
         )
     </insert>
 
