@@ -139,7 +139,7 @@ db에서 아이디와 닉네임은 unique값인데, 만약 이 규칙을 어긴�
 
 ## 5. DB 설계
 
-![board](https://github.com/DY0617/Project_chatBoard/assets/79496557/327e4d12-225b-4c69-b68a-da4af40e1cb5)
+![board - tb_post](https://github.com/DY0617/Project_chatBoard/assets/79496557/fa94730c-7858-4521-b7a0-da8e7f75d134)
 
 ---
 
