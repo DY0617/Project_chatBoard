@@ -73,15 +73,28 @@
 
     <!-- 댓글 리스트 조회 -->
     <select id="findAll" parameterType="long" resultType="com.study.domain.comment.CommentResponse">
+        WITH RECURSIVE CTE AS (
+        SELECT id, post_id, content,writer,delete_yn, created_date,modified_date,user_id,parent, convert(id, char) as path
+        FROM tb_comment
+        WHERE parent IS NULL
+        AND post_id = #{value}
+        UNION ALL
+        SELECT uc.id, uc.post_id, uc.content,uc.writer,uc.delete_yn, uc.created_date,uc.modified_date,uc.user_id,uc.parent, concat(CTE.id, '-', uc.id) AS path
+        FROM tb_comment uc
+        INNER JOIN CTE ON uc.parent = CTE.id
+        WHERE uc.post_id = #{value}
+
+        )
+
+
         SELECT
         <include refid="commentColumns" />
         FROM
-        tb_comment
-        WHERE
+        CTE
+        where
         delete_yn = 0
-        AND post_id = #{value}
-        ORDER BY
-        parent asc
+        ORDER BY CONVERT(SUBSTRING_INDEX(path, '-', 1), UNSIGNED) ASC, id ASC, CONVERT(SUBSTRING_INDEX(path, '-', 2), UNSIGNED) ASC, id ASC
+
     </select>
 
     <select id="count" parameterType="long" resultType="int">
