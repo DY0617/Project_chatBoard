@@ -40,7 +40,11 @@
         </tr>
         <tr>
           <th scope="row">내용</th>
-          <td colspan="3">[[ ${post.content} ]]</td>
+          <td colspan="3">
+            <pre>
+              [[ ${post.content} ]]
+            </pre>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -153,11 +157,11 @@
 		// 대댓글 폼
 		function commentCommentForm(id) {
 			var commentId = id;
-			var content = document.getElementById(id).innerText;
+			var content = '';
 
 			$('ul[name=commentChange]').hide();
 			$('pre[name=comment' + commentId + ']').contents().unwrap().wrap('<textarea id="newComment" class="form-control mt-2" name="updateContent" rows="4"></textarea>');
-			$('p[name=createDate' + commentId + ']').contents().unwrap().wrap('<input name="update" type="button" class="btns btn_bdr3 btn_mid" style="width:50px;height:33px;font-size:13px;margin-right:5px;" value="수정" onclick="updateComment(' + commentId + ')"/>');
+			$('p[name=createDate' + commentId + ']').contents().unwrap().wrap('<input name="update" type="button" class="btns btn_bdr3 btn_mid" style="width:50px;height:33px;font-size:13px;margin-right:5px;" value="작성" onclick="insertCommentComment(' + commentId + ')"/>');
 			$('input[name=update]').after("<button class=\"btns btn_bdr3 btn_mid\" onclick=\"getComments()\">취소</button>");
 		}
 
@@ -194,7 +198,7 @@
 
 			$('ul[name=commentChange]').hide();
 			$('pre[name=comment' + commentId + ']').contents().unwrap().wrap('<textarea id="newComment" class="form-control mt-2" name="updateContent" rows="4"></textarea>');
-			$('p[name=createDate' + commentId + ']').contents().unwrap().wrap('<input name="update" type="button" class="btns btn_bdr3 btn_mid" style="width:50px;height:34px;font-size:13px;" value="수정" onclick="updateComment(' + commentId + ')"/>');
+			$('p[name=createDate' + commentId + ']').contents().unwrap().wrap('<input name="update" type="button" class="btns btn_bdr3 btn_mid" style="width:49px;height:32px;font-size:13px;margin-right:5px;" value="수정" onclick="updateComment(' + commentId + ')"/>');
 			$('input[name=update]').after("<button class=\"btns btn_bdr3 btn_mid\" onclick=\"getComments()\">취소</button>");
 		}
 
