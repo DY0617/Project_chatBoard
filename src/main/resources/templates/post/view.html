@@ -103,7 +103,13 @@
 					var size = 0
 					$.each(response, function (key, value) {
 						size = size + 1;
-						a += '<hr /><div>';
+						if(value.parent==null){
+						  a += '<hr /><div>';
+						}
+						else{
+						  a += '<hr /><div style="float:left;">ㄴ</div><div style="margin-left:20px;">';
+						}
+
 						a += '<input type="hidden" id="commentId" name="commentId" value="' + value.id + '">';
 						a += '<span id="writer" style="font-weight: bold; margin-right: 10px">' + value.writer + '</span>';
 						if(value.modifiedDate!=null){
