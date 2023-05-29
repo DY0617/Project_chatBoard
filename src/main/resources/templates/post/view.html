@@ -147,8 +147,7 @@
 		function insertComment() {
 			var boardId = $('input[name=id]').val();
 			var content = document.getElementById("content").value;
-			var param = { "content": content ,
-			              "parent": 0}
+			var param = { "content": content }
 			var url = '/comments/' + boardId;
 
 			if (isEmpty(content) == true) {
