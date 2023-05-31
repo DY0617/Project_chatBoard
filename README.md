@@ -60,21 +60,29 @@ ChatBoard 프로젝트는 크게 세가지 구성요소로 나뉘어 있다. 게
 ### 1. POST
 1. 전체 게시글 보기
 
-![chat_board_main](https://user-images.githubusercontent.com/79496557/224257083-a74ed0b8-713b-433f-bb35-049036556548.PNG)
+![메인](https://github.com/DY0617/Project_chatBoard/assets/79496557/cb36c2ad-9399-4346-b8c6-b7e21d7d81da)
 
 2. 본인이 쓴 게시글만 보기
 
-![내가 쓴 글](https://user-images.githubusercontent.com/79496557/224258276-0055f3a8-0973-4bcd-bd09-7075862a220e.PNG)
+![내글](https://github.com/DY0617/Project_chatBoard/assets/79496557/cdff1677-fa89-4197-af00-7bbd4ce6aefb)
 
 좌측 바에서 '내가 작성한 글'을 클릭하면 USER의 id(PK)와 POST의 user_id(FK) 를 대조하여 내가 작성한 글들을 가져온다.
 만약 로그인 상태가 아니라면 로그인 창으로 화면이 전환된다.
 
+3. 각 게시판 별 글 보기
+
+![자게](https://github.com/DY0617/Project_chatBoard/assets/79496557/ac54f33f-d052-4c82-96f9-267e5c647e9a)
+
+![인사](https://github.com/DY0617/Project_chatBoard/assets/79496557/d9260662-b833-47a6-8f98-3f0bfb53d67b)
+
+각 게시판을 선택하면, 해당 게시판에 적혀있는 글만 가져온다.
+
 3. 게시글 등록
 
-![글 작성](https://user-images.githubusercontent.com/79496557/224259174-3c45ac76-f3e5-4a5b-bba2-c0fb0dadef61.PNG)
+![등록](https://github.com/DY0617/Project_chatBoard/assets/79496557/77cb55c6-ac39-47c4-b0be-6c7599a668e1)
 
-자유게시판이나, 내가 작성한 글에서 우측 하단에 글쓰기 버튼이 있는데, 버튼을 클릭하면 해당 페이지로 전환된다. 로그인 상태가 아니라면 로그인 창으로 화면이 전환된다.
-공지글 체크버튼은 체크 시 공지글이 되고, 체크 해제 시 평범한 글이 된다. 등록일은 글 작성 시간을 바로 가져오며 readonly 상태이다. 작성자도 로그인 한 유저의 nickname이 값이며, readonly 상태이다. 그리고 내용을 자유롭게 입력하고 저장 버튼을 누르면 게시글이 db의 post table에 저장되며, 뒤로 버튼을 누를 경우 다시 게시글 보기로 이동한다.
+게시글 목록 우측 하단에 글쓰기 버튼이 있는데, 버튼을 클릭하면 해당 페이지로 전환된다. 로그인 상태가 아니라면 로그인 창으로 화면이 전환된다.
+박스를 통해 게시판 카테고리에서 작성하고 싶은 카테고리를 선택할 수 있다. 공지글 체크버튼은 체크 시 공지글이 되고, 체크 해제 시 평범한 글이 된다. 등록일은 글 작성 시간을 바로 가져오며 readonly 상태이다. 작성자도 로그인 한 유저의 nickname이 값이며, readonly 상태이다. 그리고 내용을 자유롭게 입력하고 저장 버튼을 누르면 게시글이 db의 post table에 저장되며, 뒤로 버튼을 누를 경우 다시 게시글 보기로 이동한다.
 
 4. 게시글 상세보기
 
