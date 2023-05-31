@@ -4,8 +4,7 @@
 
 시간 날 때마다 개선중
 
-![chat_board_main](https://user-images.githubusercontent.com/79496557/224250034-b5cb3652-33d9-438a-a5cb-85c9f2ad2278.PNG)
-
+![메인](https://github.com/DY0617/Project_chatBoard/assets/79496557/5ce40f4d-17ba-4481-9b00-3e0c6fc0d5fc)
 
 # 배포
 
